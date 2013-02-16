@@ -39,6 +39,13 @@ I'd classify my company as a:
 * Design or consultant company
 * Media outlet
 
+I'm interested in meeting with people from:
+
+* Retail outlets
+* Design or consultant companies
+* Media outlets
+
+
 My company is:
 
 * Very small (Just one person)
