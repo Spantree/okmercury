@@ -18,7 +18,8 @@ class QuestionController {
 			id: params.id,
 			questionText: question?.question ?: '',
 			options: question?.options?.collect { it.answer } ?: [],
-			success: params.success]
+			success: params.success
+		]
 	}
 	
 	def save() {
