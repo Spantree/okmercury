@@ -3,7 +3,7 @@
 A blatant plagarism of the [OKCupid Matching Algorithm](http://www.okcupid.com/help/match-percentages) applied to 
 business matchmaking at meetings and conferences.
 
-This is an open-source contribution [48-hour hackathon](http://mpitechcon.com/hackathon/).
+Part of a [48-hour hackathon](http://mpitechcon.com/hackathon/).  This project may never be complete.
 
 ## Authors
 
