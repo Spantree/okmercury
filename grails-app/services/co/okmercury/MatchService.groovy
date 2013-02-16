@@ -38,4 +38,32 @@ class MatchService {
 			qMatch.save()
 		}
 	}
+	
+	def generateUserMatches(User principalUser) {
+		
+		User.findAll().each { User matchUser ->
+			
+			int principalPoints = 0;
+			int principalPossible = 0;
+			
+			int matchPoints = 0;
+			int matchPointsPossible = 0;
+			
+			int questionsFound = 0;
+			
+			
+			
+			QuestionMatch.findAll { userA == principalUser && userB == matchUser }.each { QuestionMatch qm ->
+				questionsFound++;
+				
+				principalPoints += qm.scoreForUserA
+				principalPoints += qm.pointsPossibleForUserA
+				
+				
+			}
+		}
+		
+		
+	
+	}
 }
