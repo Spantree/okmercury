@@ -10,7 +10,7 @@ class Question {
 	ObjectId assignedId
 	String question
 	Set<QuestionOption> options = []
-	Set<ObjectId> usersIdsThatHaveAnswered = []
+	Set<ObjectId> userIdsThatHaveAnswered = []
 	User createdBy
 	Date createdDate
 	Date lastModifiedDate
