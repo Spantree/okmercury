@@ -7,7 +7,7 @@
 	<body>
 		<div class="row">
 			<div class="span6 definition">
-				<em>Mercury:</em> the patron god of financial gain, commerce, eloquence (and thus poetry), messages/communication (including divination), travelers, boundaries, luck, trickery and thieves; he was also the guide of souls to the underworld.
+				<em>Mercury:</em> the patron god of financial gain, commerce, eloquence (and thus poetry), messages/communication (including divination), travelers, boundaries and luck.
 			</div>
 		</div>
 		<div class="row main-links">
