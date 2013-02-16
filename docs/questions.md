@@ -20,54 +20,60 @@ My business has other offices in:
 * We're in all 50 states
 * {List of states}
  
-Scenario #1: Home Furnishings Tradeshow
 
-I work at a:
-* Retail store
-* Interior design company
-* Remodeling or renovation company
+Revised Scenario #1: Home Furnishings Trade Show
+
+At this tradeshow, I am an:
+
+* Exhibitor
+* Attendee
+
+My business deals with (check all that apply):
+
+* Furniture or home decor
+* Renovation or remodeling
+
+I'd classify my company as a:
+
+* Retail outlet
+* Design or consultant company
 * Media outlet
 
-I am a:
-* Buyer
-* Designer or consultant
-* Business owner
-* Other
+I'm interested in meeting with people from:
+
+* Retail outlets
+* Design or consultant companies
+* Media outlets
+
 
 My company is:
-* Very small – It’s just me.
+
+* Very small (Just one person)
 * Small (2-50 employees)
 * Medium-sized (51-250 employees)
 * Large (250+ employees)
 
+We work with the following styles (check all that apply):
 
-Styles my clients love include (check as many as apply):
-* Antique
-* Arts and Crafts
-* Contemporary
-* Ethnic
-* Modern
-* Mid century
-* Traditional
-* Vintage
+* Antique, Mid-century, Vintage
+* Contemporary, Modern
+* Ethnic, Arts and Crafts, Mission Style
+* Traditional, Classic
 
-I often buy or recommend for my clients (check as many as apply):
-* Home furniture
-* Office furniture
-* Fixtures or appliances
-* Home décor items
-* Rugs
+We deal with furnishings for the:
+
+* Home
+* Office
+* Other
+
+My company works with (check all that apply):
+
+* Furniture, decor items, rugs
+* Fixtures and appliances
 * Flooring
-* Countertops
-* Cabinetry
+* Counters and cabinetry
 
-I’m interested in exhibits about:
-* Color trends
-* Renovation trends
-* Furniture/décor trends
+Anything else you'd like to tell your tradeshow matches:
 
-My primary office is in [City], [State].
+(Small fill in the blank)
 
-My business has locations in:
-* All 50 states
-* [List of states]
