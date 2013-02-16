@@ -1,10 +1,13 @@
 package co.okmercury
 
+import org.bson.types.ObjectId
+
 class Answer {
+	ObjectId id
 	User user
 	Question question
 	QuestionOption userAnswer
-	List<QuestionOption> acceptableAnswers
+	Set<ObjectId> acceptableAnswerIds = []
 	Importance importance
 	Date lastModifiedDate
 }
