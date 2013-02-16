@@ -1,11 +1,21 @@
 package co.okmercury
 
+import com.mongodb.AggregationOutput
+import com.mongodb.DBCollection;
+
 class MatchService {
+	
+	def mongo
+	
+	DBCollection getQuestionMatchCollection() {
+		mongo.getDB('okmercury').getCollection('questionMatch')
+	}
+	
 	def generateQuestionMatches(Answer answerA) {
-		User userA = answerA.person;
+		User userA = answerA.user;
 		Question questionAnswered = answerA.question
 		
-		Answer.findAll{ question == questionAnswered && person != userA }.each { Answer answerB ->
+		Answer.findAll{ question == questionAnswered && user != userA }.each { Answer answerB ->
 			User userB = answerB.person
 			
 			int answerAWeight = answerA.importance.getWeight()
@@ -43,24 +53,78 @@ class MatchService {
 		
 		User.findAll().each { User matchUser ->
 			
-			int principalPoints = 0;
-			int principalPossible = 0;
+			AggregationOutput aggOut1 = questionMatchCollection.aggregate(
+				[ $group :
+					[ principalPoints : 
+						[ $sum : "$scoreForUserA" ],
+					principalPointsPossible :
+						[ $sum : "$pointsPossibleForUserA" ],
+					matchPoints :
+						[ $sum : "$scoreForUserB" ],
+					matchPointsPossible :
+						[ $sum : "$pointsPossibleForUserB" ],
+					totalQuestions :
+						[ $sum : 1 ]
+					]
+				], 
+				[ $match : 
+					[ 
+						"userA.id" : principalUser.id, 
+						"userB.id" : matchUser.id
+					] 
+				] 
+			)
 			
-			int matchPoints = 0;
-			int matchPointsPossible = 0;
+			AggregationOutput aggOut2 = questionMatchCollection.aggregate(
+				[ $group :
+					[ principalPoints :
+						[ $sum : "$scoreForUserB" ],
+					principalPointsPossible :
+						[ $sum : "$pointsPossibleForUserB" ],
+					matchPoints :
+						[ $sum : "$scoreForUserA" ],
+					matchPointsPossible :
+						[ $sum : "$pointsPossibleForUserA" ],
+					totalQuestions :
+						[ $sum : 1 ]
+					]
+				],
+				[ $match :
+					[
+						"userA.id" : matchUser.id,
+						"userB.id" : principalUser.id
+					]
+				]
+			)
 			
-			int questionsFound = 0;
+			UserMatch um = new UserMatch()
+			um.principalUser = principalUser
+			um.matchUser = matchUser
 			
+			um.principalPoints = aggOut1.results()[0].principalPoints + aggOut2.results()[0].principalPoints
+			um.principalPointsPossible = aggOut1.results()[0].principalPointsPossible + aggOut2.results()[0].principalPointsPossible
 			
+			um.matchPoints = aggOut1.results()[0].matchPoints + aggOut2.results()[0].matchPoints
+			um.matchPointsPossible = aggOut1.results()[0].matchPointsPossible + aggOut2.results()[0].matchPointsPossible
 			
-			QuestionMatch.findAll { userA == principalUser && userB == matchUser }.each { QuestionMatch qm ->
-				questionsFound++;
-				
-				principalPoints += qm.scoreForUserA
-				principalPoints += qm.pointsPossibleForUserA
-				
-				
+			if( um.principalPointsPossible > 0 ) {
+				um.principalPercentageScore = um.principalPoints/um.principalPointsPossible * 100.0f
 			}
+			else {
+				um.principalPercentageScore = 0.0f
+			}
+			
+			if( um.matchPercentageScore > 0 ) {
+				um.matchPercentageScore = um.matchPoints/um.matchPointsPossible * 100.0f
+			}
+			else {
+				um.matchPercentageScore = 0.0f
+			}
+			
+			um.overallScore = Math.sqrt(um.principalPercentageScore * um.matchPercentageScore)
+			
+			um.save()
+			
 		}
 		
 		
