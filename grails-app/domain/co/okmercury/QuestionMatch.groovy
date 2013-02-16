@@ -1,6 +1,6 @@
 package co.okmercury
 
-class AnswerMatch {
+class QuestionMatch {
 	User userA
 	User userB
 	Integer scoreForUserA
