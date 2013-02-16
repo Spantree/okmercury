@@ -25,7 +25,7 @@
 					<g:if test="${!isLogin}">
 						<g:if test="${session.user}">
 							<a href="/logout" class="btn logout fa-icon-signout">
-								Logout
+								Logout ${session.user.email}
 							</a>
 						</g:if>
 					</g:if>

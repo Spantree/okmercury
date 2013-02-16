@@ -6,7 +6,9 @@ class LoginController {
 			User user = User.findByEmail(params.user)
 			if(!user) {
 				user = new User(email: params.user, password: params.password ?: 'password')
+				user.save(flush: true)
 			}
+			log.info "user: ${user}"
 			session.user = user
 			redirect(uri: '/')
 		}
