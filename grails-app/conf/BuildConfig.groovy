@@ -48,6 +48,8 @@ grails.project.dependency.resolution = {
 		runtime 'com.spatial4j:spatial4j:0.3'
 		runtime 'org.codehaus.groovy.modules.http-builder:http-builder:0.6'
 		runtime 'org.codehaus.gpars:gpars:1.0.0'
+		
+		test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
 
     plugins {
@@ -73,6 +75,8 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.2.1"
 
         runtime ':cache:1.0.1'
-		test ":spock:0.7"
+		runtime ":spock:0.7" {
+			exclude "spock-grails-support"
+		}
     }
 }
