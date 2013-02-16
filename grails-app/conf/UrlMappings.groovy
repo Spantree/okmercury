@@ -7,12 +7,20 @@ class UrlMappings {
 			}
 		}
 
-		"/question/"(controller: 'question') { action = [GET: 'list', POST: 'create'] }
-		"/question/$id"(controller: 'question', action: 'edit')
+		"/question/"(controller: 'question') {
+			action = [GET: 'list', POST: 'create']
+		}
+		
+		"/question/$id"(controller: 'question') {
+			action = [GET: 'edit', PUT: 'save']
+		}
+		
+		"/user/${userId}/question/${questionId}"(controller: 'question', action: 'answer')
 
 		"/login"(controller: 'login', action: 'login')
+		"/logout"(controller: 'login', action: 'logout')
 		
-		"/"(view:"/index")
+		"/"(controller: 'home', action: 'index')
 		"500"(view:'/error')
 		
 	}

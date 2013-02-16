@@ -1,6 +1,9 @@
 $ ->
-	addNewQuestion = ->
+	addNewQuestion = (data, status) ->
 		$form = $('<form method="POST" action="/question">')
+		if(data?.success)
+			$status = $("<input type=\"hidden\" name=\"success\" value=\"true\">")
+			$form.append($status)
 		$form.submit()
 		return false
 

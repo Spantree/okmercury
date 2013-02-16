@@ -6,4 +6,5 @@ class Answer {
 	QuestionOption answer
 	List<QuestionOption> acceptableAnswers
 	Importance importance
+	Date lastModifiedDate
 }
