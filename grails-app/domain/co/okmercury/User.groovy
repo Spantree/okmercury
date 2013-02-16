@@ -5,4 +5,6 @@ class User {
 	String lastName
 	String email
 	String passwordHash
+	String gravatarHash
+	List<String> roles
 }
