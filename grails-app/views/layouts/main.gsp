@@ -22,15 +22,13 @@
 			<div class="row">
 				<a href="/" class="logo ${isLogin?'center':''}">
 					<r:img uri="images/logo.png" class="logo"/>
+					<g:if test="${!isLogin}">
+						<a href="/login" class="btn logout fa-icon-signout">
+							Logout
+						</a>
+					</g:if>
 				</a>
 			</div>
-			<g:if test="${!isLogin}">
-				<div class="row">
-					<a href="/login" class="login">
-						Login
-					</a>
-				</div>
-			</g:if>
 			<g:layoutBody/>
 		</div>
 		<r:layoutResources />
