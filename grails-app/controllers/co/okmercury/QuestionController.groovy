@@ -4,6 +4,9 @@ import grails.converters.JSON
 
 import org.bson.types.ObjectId
 
+import com.mongodb.DBCollection
+import com.mongodb.DBObject
+
 class QuestionController {
 	QuestionService questionService
 	
@@ -25,7 +28,7 @@ class QuestionController {
 	def save() {
 		def json = request.JSON
 		String id = params.id
-		Question question = questionService.updateQuestion(id, json.questionText, json.possibleAnswers)
+		Question question = questionService.updateQuestion(id, json.questionText, json.possibleAnswers, session.user)
 		if(question.errors.hasErrors()) {
 			response.status = 500
 			render ([success: false, errors: question.errros.allErrors] as JSON).toString()
@@ -39,6 +42,12 @@ class QuestionController {
 	}
 	
 	def answer() {
-		render(view: 'answer')
+		Question question = Question.get(new ObjectId(params.questionId))
+		render(view: 'answer', model: [question: question, importanceOptions: Importance.class.getEnumConstants()])
+	}
+	
+	def nextUnansweredQuestionForUser() {
+		ObjectId questionId = questionService.getNextUnansweredQuestionForUser(session.user)
+		redirect(uri: "/user/${session.user.id}/question/${questionId}")
 	}
 }
