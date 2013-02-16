@@ -7,7 +7,13 @@ class UrlMappings {
 			}
 		}
 
+		"/question/"(controller: 'question') {
+			action = [GET: 'list', POST: 'create']
+		}
+		"/question/$id"(controller: 'question', action: 'edit')
+		
 		"/"(view:"/index")
 		"500"(view:'/error')
+		
 	}
 }
