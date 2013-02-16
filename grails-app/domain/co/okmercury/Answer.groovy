@@ -3,7 +3,7 @@ package co.okmercury
 class Answer {
 	User user
 	Question question
-	QuestionOption answer
+	QuestionOption userAnswer
 	List<QuestionOption> acceptableAnswers
 	Importance importance
 	Date lastModifiedDate

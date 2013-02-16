@@ -21,8 +21,8 @@ class MatchService {
 			int answerAWeight = answerA.importance.getWeight()
 			int answerBWeight = answerB.importance.getWeight()
 			
-			boolean acceptableForUserA = answerA.acceptableAnswers.contains(answerB.answer)
-			boolean acceptableForUserB = answerB.acceptableAnswers.contains(answerA.answer)
+			boolean acceptableForUserA = answerA.acceptableAnswers.contains(answerB.userAnswer)
+			boolean acceptableForUserB = answerB.acceptableAnswers.contains(answerA.userAnswer)
 			
 			QuestionMatch qMatch = new QuestionMatch();
 			qMatch.userA = userA
