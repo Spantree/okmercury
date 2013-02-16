@@ -7,7 +7,7 @@ class AnswerService {
 	QuestionService questionService
 	
 	void addUserToQuestionsAnswered(User user, Question question) {
-		questionService.collection.update([_id: question.id], ['$addToSet': [userIdsThatHaveAnswered: user.id]])
+		questionService.collection.update([_id: question.id], ['$addToSet': [userIdsThatHaveAnswered: new ObjectId(user.id)]])
 	}
 	
 	Answer saveAnswer(User user, String questionId, String userAnswerId, def acceptableAnswerIds, String importanceName) {
