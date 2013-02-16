@@ -17,13 +17,14 @@
 		<r:layoutResources />
 	</head>
 	<body>
+		<g:set var="isLogin" value="${controllerName == 'login'}"/>
 		<div class="container">
 			<div class="row">
-				<a href="/">
+				<a href="/" class="logo ${isLogin?'center':''}">
 					<r:img uri="images/logo.png" class="logo"/>
 				</a>
 			</div>
-			<g:if test="${controllerName != 'login'}">
+			<g:if test="${!isLogin}">
 				<div class="row">
 					<a href="/login" class="login">
 						Login
