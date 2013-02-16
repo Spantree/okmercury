@@ -5,14 +5,14 @@ class MatchService {
 		User userA = answerA.person;
 		Question questionAnswered = answerA.question
 		
-		Answer.findAll{ question == questionAnswered && person != userA }.each { Answer answerB ->
+		Answer.findAll{ question == questionAnswered && user != userA }.each { Answer answerB ->
 			User userB = answerB.person
 			
 			int answerAWeight = answerA.importance.getWeight()
 			int answerBWeight = answerB.importance.getWeight()
 			
-			boolean acceptableForUserA = answerA.acceptableAnswers.contains(answerB.answer)
-			boolean acceptableForUserB = answerB.acceptableAnswers.contains(answerA.answer)
+			boolean acceptableForUserA = answerA.acceptableAnswers.contains(answerB.userAnswer)
+			boolean acceptableForUserB = answerB.acceptableAnswers.contains(answerA.userAnswer)
 			
 			QuestionMatch qMatch = new QuestionMatch();
 			qMatch.userA = userA
