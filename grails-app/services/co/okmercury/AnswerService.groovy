@@ -7,10 +7,10 @@ class AnswerService {
 	QuestionService questionService
 	
 	void addUserToQuestionsAnswered(User user, Question question) {
-		questionService.collection.update([_id: question.id], ['$addToSet': [userIdsThatHaveAnswered: new ObjectId(user.id)]])
+		questionService.collection.update([_id: question.id], ['$addToSet': [userIdsThatHaveAnswered: user.id]])
 	}
 	
-	Answer saveAnswer(User user, String questionId, String userAnswerId, def acceptableAnswerIds, String importanceName) {
+	Answer saveAnswer(User user, String questionId, String userAnswerId, def acceptableQuestionOptionIds, String importanceName) {
 		Question question = Question.get(questionId)
 		Answer answer = Answer.findByUserAndQuestion(user, question)
 		if(!answer) {
@@ -21,7 +21,7 @@ class AnswerService {
 			answer.acceptableAnswerIds = new HashSet<ObjectId>()
 		}
 		answer.acceptableAnswerIds.clear()
-		answer.acceptableAnswerIds.addAll(acceptableAnswerIds.collect { new ObjectId(it) })
+		answer.acceptableAnswerIds.addAll(acceptableQuestionOptionIds.collect { new ObjectId(it) })
 		answer.importance = importanceService.getImportanceByName(importanceName)
 		answer.lastModifiedDate = new Date()
 		answer.save(flush: true)
