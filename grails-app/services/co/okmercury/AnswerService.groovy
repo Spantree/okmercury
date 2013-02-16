@@ -4,6 +4,11 @@ import org.bson.types.ObjectId
 
 class AnswerService {
 	ImportanceService importanceService
+	QuestionService questionService
+	
+	void addUserToQuestionsAnswered(User user, Question question) {
+		questionService.collection.update([_id: question.id], ['$addToSet': [userIdsThatHaveAnswered: user.id]])
+	}
 	
 	Answer saveAnswer(User user, String questionId, String userAnswerId, def acceptableAnswerIds, String importanceName) {
 		Question question = Question.get(questionId)
@@ -24,6 +29,7 @@ class AnswerService {
 			log.error "Error saving answer for user ${user.id}: ${answer.errors.allErrors}"
 		} else {
 			log.info "Successfully saved answer for user ${user.id}"
+			addUserToQuestionsAnswered(user, question)
 		}
 		return answer
 	}
