@@ -13,3 +13,10 @@ I am interested in the following types of services:
 * [Options can be specific to the proposed show]
 
 My business often has challenges with:
+
+My office is located in {City} {State}. 
+
+My business has other offices in:
+* We're in all 50 states
+* {List of states}
+ 
