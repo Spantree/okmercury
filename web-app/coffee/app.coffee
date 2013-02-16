@@ -7,6 +7,9 @@ $ ->
 		$form.submit()
 		return false
 
+	goToQuestionList = ->
+		window.location.redirect '/question'
+
 	goHome = ->
 		window.location.redirect '/'
 
@@ -22,7 +25,7 @@ $ ->
 			if val
 				data.possibleAnswers.push val
 
-		callback = if addAnother then addNewQuestion else goHome
+		callback = if addAnother then addNewQuestion else goToQuestionList
 
 		ajaxSettings =
 			type: 'PUT'

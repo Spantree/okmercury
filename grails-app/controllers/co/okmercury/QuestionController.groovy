@@ -16,8 +16,8 @@ class QuestionController {
 		Question question = Question.findByAssignedId(params.id)
 		[
 			id: params.id,
-			questionText: question.question?:'',
-			options: question.options?.collect { it.answer } ?: [],
+			questionText: question?.question ?: '',
+			options: question?.options?.collect { it.answer } ?: [],
 			success: params.success]
 	}
 	
