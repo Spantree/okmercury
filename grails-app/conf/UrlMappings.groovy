@@ -15,6 +15,8 @@ class UrlMappings {
 			action = [GET: 'edit', PUT: 'save']
 		}
 		
+		"/testUserMatch"(controller: 'testUserMatch', action: 'test')
+		
 		"/user/${userId}/question/${questionId}"(controller: 'question', action: 'answer')
 		"/user/${userId}/question/unanswered"(controller: 'question', action: 'nextUnansweredQuestionForUser')
 
