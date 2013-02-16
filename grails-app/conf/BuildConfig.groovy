@@ -60,6 +60,9 @@ grails.project.dependency.resolution = {
         //runtime ":cached-resources:1.0"
         //runtime ":yui-minify-resources:0.1.4"
 		
+		runtime(":twitter-bootstrap:2.2.2") { excludes 'svn' }
+		runtime(":less-resources:1.3.0.2") { excludes 'svn' }
+        runtime ":coffeescript-resources:0.3.2"
 		runtime ":handlebars-resources:0.3.1"
 		runtime ":redis:1.3.2"
 		runtime ":mongodb:1.1.0.GA"
