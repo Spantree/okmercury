@@ -8,10 +8,14 @@ $ ->
 		return false
 
 	goToQuestionList = ->
-		window.location.redirect '/question'
+		window.location = '/question'
 
 	goHome = ->
-		window.location.redirect '/'
+		window.location = '/'
+
+	showError = ->
+		$('#error-message').css
+			display: 'inline'
 
 	saveQuestion = (addAnother) ->
 		id = $('#question-id').val()
@@ -33,8 +37,10 @@ $ ->
 			contextType: 'application/json'
 			processData: false
 			success: callback
+			error: showError
 
 		$.ajax "/question/#{id}", ajaxSettings
+		return false
 
 
 	$('#add-question').click addNewQuestion

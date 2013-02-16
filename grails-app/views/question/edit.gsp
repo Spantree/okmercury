@@ -11,6 +11,11 @@
 				</div>
 			</div>
 		</g:if>
+		<div class="row-fluid"/>
+				<div id="error-message" class="span6 alert">
+					An error occurred
+				</div>
+			</div>
 		<div class="row-fluid">
 			<form class="question-create">
 				<input type="hidden" id="question-id" name="id" value="${id}"/>
