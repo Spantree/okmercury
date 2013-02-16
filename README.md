@@ -7,8 +7,8 @@ This is an open-source contribution [48-hour hackathon](http://mpitechcon.com/ha
 
 ## Authors
 
-Cedric Hurst
-Gary Turovsky
+* Cedric Hurst
+* Gary Turovsky
 
 ## License
 
