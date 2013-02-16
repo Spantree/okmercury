@@ -1,4 +1,4 @@
-package com.okmercury
+package co.okmercury
 
 class Person {
 	String firstName

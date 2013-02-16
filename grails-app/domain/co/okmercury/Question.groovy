@@ -1,4 +1,4 @@
-package com.okmercury
+package co.okmercury
 
 class Question {
 	String question
