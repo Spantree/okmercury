@@ -42,10 +42,16 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         // runtime 'mysql:mysql-connector-java:5.1.20'
+		runtime 'net.sourceforge.jtds:jtds:1.2'
+		runtime 'org.elasticsearch:elasticsearch:0.20.4'
+		runtime 'org.elasticsearch:elasticsearch-lang-groovy:1.2.0'
+		runtime 'com.spatial4j:spatial4j:0.3'
+		runtime 'org.codehaus.groovy.modules.http-builder:http-builder:0.6'
+		runtime 'org.codehaus.gpars:gpars:1.0.0'
     }
 
     plugins {
-        runtime ":hibernate:$grailsVersion"
+        // runtime ":hibernate:$grailsVersion"
         runtime ":jquery:1.8.3"
         runtime ":resources:1.1.6"
 
@@ -53,11 +59,17 @@ grails.project.dependency.resolution = {
         //runtime ":zipped-resources:1.0"
         //runtime ":cached-resources:1.0"
         //runtime ":yui-minify-resources:0.1.4"
+		
+		runtime ":handlebars-resources:0.3.1"
+		runtime ":redis:1.3.2"
+		runtime ":mongodb:1.1.0.GA"
+		runtime ":joda-time:1.4"
 
         build ":tomcat:$grailsVersion"
 
         runtime ":database-migration:1.2.1"
 
-        compile ':cache:1.0.1'
+        runtime ':cache:1.0.1'
+		test ":spock:0.7"
     }
 }
