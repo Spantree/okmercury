@@ -1,7 +1,7 @@
 package co.okmercury
 
 class Answer {
-	User person
+	User user
 	Question question
 	QuestionOption answer
 	List<QuestionOption> acceptableAnswers
