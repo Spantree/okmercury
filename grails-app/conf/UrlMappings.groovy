@@ -7,10 +7,10 @@ class UrlMappings {
 			}
 		}
 
-		"/question/"(controller: 'question') {
-			action = [GET: 'list', POST: 'create']
-		}
+		"/question/"(controller: 'question') { action = [GET: 'list', POST: 'create'] }
 		"/question/$id"(controller: 'question', action: 'edit')
+
+		"/login"(controller: 'login', action: 'login')
 		
 		"/"(view:"/index")
 		"500"(view:'/error')
