@@ -17,7 +17,10 @@
 				href="<g:createLink uri="/question"/>">
 				<i class="fa-icon-tasks"></i>Review Questions
 			</a>
-			<a id="answer-questions" class="span2 btn btn-success"><i class="fa-icon-ok"></i>Answer Questions</a>
+			<a id="answer-questions" class="span2 btn btn-success"
+				href="<g:createLink uri="/user/${session.user.id}/question/unanswered"/>">
+				<i class="fa-icon-ok"></i>Answer Questions
+			</a>
 			<a id="answer-questions" class="span2 btn btn-success"><i class="fa-icon-asterisk"></i>View Matches</a>
 		</div>
 	</body>

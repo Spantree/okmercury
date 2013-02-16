@@ -3,11 +3,14 @@ package co.okmercury
 import org.bson.types.ObjectId
 
 import com.mongodb.DBCollection
-import com.mongodb.WriteConcern
+import com.mongodb.DBObject
+import com.mongodb.Mongo
 
 class QuestionService {
+	def mongo
+	
 	DBCollection getCollection() {
-		Question.collection
+		mongo.getDB('okmercury').getCollection('question')
 	}
 	
 	Question upsert(String id) {
@@ -21,11 +24,12 @@ class QuestionService {
 	
 	// TODO: Make this actually perform an upsert
 	QuestionOption upsertOption(Question question, String optionString, Float order) {
-		new QuestionOption(
-			question: question,
-			answer: optionString,
-			order: order	
-		)
+		QuestionOption option = QuestionOption.findByQuestionAndOrder(question, order)
+		if(!option) {
+			option = new QuestionOption(question: question, order: order)
+		}
+		option.answer = optionString
+		return option
 	}
 	
 	QuestionOption saveOption(QuestionOption option) {
@@ -55,7 +59,15 @@ class QuestionService {
 		List<QuestionOption> options = optionStrings.collect { String option ->
 			upsertOption(question, option, i++)
 		}
-		question.createdBy = createdByUser
+		
+		QuestionOption.where {
+			eq 'question', question
+			order >= i
+		}.deleteAll()
+			
+		if(!question.createdBy) {
+			question.createdBy = createdByUser
+		}
 		Date now = new Date()
 		if(!question.createdDate) {
 			question.createdDate = now
@@ -75,5 +87,10 @@ class QuestionService {
 			saveQuestion(question)
 		}
 		return question
+	}
+	
+	ObjectId getNextUnansweredQuestionForUser(User user) {
+		DBObject obj = collection.findOne([:])
+		return obj['_id']
 	}
 }

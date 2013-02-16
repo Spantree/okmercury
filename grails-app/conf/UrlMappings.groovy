@@ -16,6 +16,7 @@ class UrlMappings {
 		}
 		
 		"/user/${userId}/question/${questionId}"(controller: 'question', action: 'answer')
+		"/user/${userId}/question/unanswered"(controller: 'question', action: 'nextUnansweredQuestionForUser')
 
 		"/login"(controller: 'login', action: 'login')
 		"/logout"(controller: 'login', action: 'logout')
