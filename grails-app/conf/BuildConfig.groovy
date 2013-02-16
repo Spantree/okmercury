@@ -41,13 +41,7 @@ grails.project.dependency.resolution = {
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
-        // runtime 'mysql:mysql-connector-java:5.1.20'
-		runtime 'net.sourceforge.jtds:jtds:1.2'
-		runtime 'org.elasticsearch:elasticsearch:0.20.4'
-		runtime 'org.elasticsearch:elasticsearch-lang-groovy:1.2.0'
-		runtime 'com.spatial4j:spatial4j:0.3'
-		runtime 'org.codehaus.groovy.modules.http-builder:http-builder:0.6'
-		runtime 'org.codehaus.gpars:gpars:1.0.0'
+        runtime 'org.codehaus.gpars:gpars:1.0.0'
 		
 		test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
@@ -66,7 +60,7 @@ grails.project.dependency.resolution = {
 		runtime(":less-resources:1.3.0.2") { excludes 'svn' }
         runtime ":coffeescript-resources:0.3.2"
 		runtime ":handlebars-resources:0.3.1"
-		runtime ":redis:1.3.2"
+		//runtime ":redis:1.3.2"
 		runtime ":mongodb:1.1.0.GA"
 		runtime ":joda-time:1.4"
 
