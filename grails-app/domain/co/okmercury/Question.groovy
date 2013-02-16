@@ -1,7 +1,10 @@
 package co.okmercury
 
+import groovy.transform.EqualsAndHashCode
+
 import org.bson.types.ObjectId
 
+@EqualsAndHashCode(includes=["id"])
 class Question {
 	ObjectId id
 	ObjectId assignedId

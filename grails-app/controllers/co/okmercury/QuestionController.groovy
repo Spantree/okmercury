@@ -4,11 +4,9 @@ import grails.converters.JSON
 
 import org.bson.types.ObjectId
 
-import com.mongodb.DBCollection
-import com.mongodb.DBObject
-
 class QuestionController {
 	QuestionService questionService
+	AnswerService answerService
 	
 	def create() {
 		ObjectId id = new ObjectId()
@@ -31,7 +29,7 @@ class QuestionController {
 		Question question = questionService.updateQuestion(id, json.questionText, json.possibleAnswers, session.user)
 		if(question.errors.hasErrors()) {
 			response.status = 500
-			render ([success: false, errors: question.errros.allErrors] as JSON).toString()
+			render ([success: false, errors: question.errors.allErrors] as JSON).toString()
 		} else {
 			render ([success: true] as JSON).toString()
 		}
@@ -40,10 +38,26 @@ class QuestionController {
 	def list() {
 		[questions: Question.list()]
 	}
-	
+
 	def answer() {
 		Question question = Question.get(new ObjectId(params.questionId))
-		render(view: 'answer', model: [question: question, importanceOptions: Importance.class.getEnumConstants()])
+		render(view: 'answer', model: [
+			user: session.user,
+			question: question,
+			options: question.options.sort { it.order },
+			importanceOptions: Importance.class.getEnumConstants()
+		])
+	}
+	
+	def saveAnswer() {
+		def json = request.JSON
+		Answer answer = answerService.saveAnswer(session.user, params.questionId, json.userAnswer, json.acceptableAnswers, json.importance)
+		if(answer.errors.hasErrors()) {
+			response.status = 500
+			render ([success: false, errors: answer.errors.allErrors] as JSON).toString()
+		} else {
+			render ([success: true] as JSON).toString()
+		}
 	}
 	
 	def nextUnansweredQuestionForUser() {
