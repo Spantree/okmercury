@@ -1,0 +1,61 @@
+@darkBlue: #2855a2;
+@lightBlue: #4572A3;
+@purple: #3929A3;
+@fuschia: #A32956;
+@green: #56A329;
+@pink: #ff1e72;
+
+body {
+	padding: 20px;
+	background: @darkBlue repeat;
+	color: white;
+	height: 100%;
+	width: 100%;
+	padding: 20px;
+	margin: 0;
+}
+
+img.logo {
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
+.row-fluid {
+	margin-top: 10px;
+}
+
+.definition {
+	margin-bottom: 10px;
+	em {
+		color: @pink;
+		font-weight: 700;
+		font-style: normal;
+		font-size: 125%;
+	}
+}
+
+#body-wrapper {
+	width: 100%;
+}
+
+.btn {
+	// margin-top: 10px;
+	margin-right: 10px;
+}
+
+.question-create {
+	@inputBackgroundColor: mix(@darkBlue, #fff, 20%);
+
+	legend {
+		color: white;
+	}
+
+	input, textarea {
+		width: 460px;
+		background-color: @inputBackgroundColor;
+	}
+}
+
+.main-links {
+	margin-top: 10px;
+}
