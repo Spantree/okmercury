@@ -11,3 +11,5 @@ I am interested in the following types of products:
 
 I am interested in the following types of services:
 * [Options can be specific to the proposed show]
+
+My business often has challenges with:
