@@ -4,6 +4,6 @@ class Answer {
 	Person person
 	Question question
 	QuestionOption answer
-	QuestionOption idealMatchAnswer
+	List<QuestionOption> acceptableAnswers
 	Importance importance
 }
