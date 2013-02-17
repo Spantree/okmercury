@@ -7,6 +7,7 @@ class Answer {
 	User user
 	Question question
 	QuestionOption userAnswer
+	String userAnswerExplanation
 	Set<ObjectId> acceptableAnswerIds = []
 	Importance importance
 	Date lastModifiedDate

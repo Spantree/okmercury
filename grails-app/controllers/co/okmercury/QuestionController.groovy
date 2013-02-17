@@ -51,7 +51,7 @@ class QuestionController {
 	
 	def saveAnswer() {
 		def json = request.JSON
-		Answer answer = answerService.saveAnswer(session.user, params.questionId, json.userAnswer, json.acceptableOptions, json.importance)
+		Answer answer = answerService.saveAnswer(session.user, params.questionId, json.userAnswer, json.acceptableOptions, json.importance, json.userAnswerExplanation)
 		if(answer.errors.hasErrors()) {
 			response.status = 500
 			render ([success: false, errors: answer.errors.allErrors] as JSON).toString()

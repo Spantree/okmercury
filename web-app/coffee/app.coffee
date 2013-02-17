@@ -53,6 +53,7 @@ $ ->
 		$acceptableAnswers = $('.acceptableAnswer').filter(':checked')
 		$importance = $('.importance').filter(':checked')
 		importance = $($importance[0]).val()
+		userAnswerExplanation = $('.userAnswerExplanation').val()
 
 		if $userAnswer.length == 0
 			errors.push "Please select an answer"
@@ -68,6 +69,7 @@ $ ->
 				userAnswer: $($userAnswer[0]).val()
 				acceptableOptions: acceptableAnswers
 				importance: importance
+				userAnswerExplanation: userAnswerExplanation
 
 			ajaxSettings =
 				type: 'PUT'
