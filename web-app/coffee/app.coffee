@@ -66,7 +66,7 @@ $ ->
 			$acceptableAnswers.each (i, el) -> acceptableAnswers.push $(el).val()
 			data =
 				userAnswer: $($userAnswer[0]).val()
-				acceptableAnswers: acceptableAnswers
+				acceptableOptions: acceptableAnswers
 				importance: importance
 
 			ajaxSettings =
