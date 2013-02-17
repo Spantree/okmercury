@@ -1,0 +1,76 @@
+## MPI Techcon Questions
+
+[
+question: "I work for...",
+  options: 
+	[
+		"Myself",
+		"A small company (2-10 employees)",
+		"A medium-sized company (10-200 employees)",
+		"A large company (200+ employees)",
+		"I am currently unemployed"
+	]
+],
+[
+question: "How much do you use technology in your events already?",
+	options: 
+	[
+		"Not at all",
+		"A little here and there",
+		"A fair amount",
+		"Central to our events"		
+	]
+],
+[
+question: "My primary role is...",
+	options: 
+	[
+		"Event Organizer",
+		"Event Designer",
+		"Supplier",
+		"Software Side"
+	]
+],
+[
+question: "My main intent here is...",
+	options: 
+	[
+		"Networking",
+		"Buying",
+		"Selling",
+		"Educational",
+		"Seeing what's out there"
+	]
+],
+[
+question: "How many events do you run each year",
+	options: 
+	[
+		"None",
+		"1 or 2",
+		"3 to 5",
+		"5 to 10",
+		"More than 10",
+		"More than 100"
+	]
+],
+[
+question: "The tech I'd love to learn more about is...",
+	options: 
+	[
+		"Hackathons",
+		"Registration Solutions",
+		"Hosted Buyer Solutions",
+		"Attendee Tracking",
+		"Name Badge Technology"
+	]
+],
+question: "My biggest fear with technology is...",
+	options: 
+	[
+		"It won't work",
+		"My users won't know how to use it",
+		"I won't know how to use it",
+		"None",
+	]
+],

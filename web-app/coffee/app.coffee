@@ -53,6 +53,7 @@ $ ->
 		$acceptableAnswers = $('.acceptableAnswer').filter(':checked')
 		$importance = $('.importance').filter(':checked')
 		importance = $($importance[0]).val()
+		userAnswerExplanation = $('.userAnswerExplanation').val()
 
 		if $userAnswer.length == 0
 			errors.push "Please select an answer"
@@ -68,6 +69,7 @@ $ ->
 				userAnswer: $($userAnswer[0]).val()
 				acceptableOptions: acceptableAnswers
 				importance: importance
+				userAnswerExplanation: userAnswerExplanation
 
 			ajaxSettings =
 				type: 'PUT'
@@ -79,6 +81,21 @@ $ ->
 
 			$.ajax "/user/#{userId}/question/#{questionId}", ajaxSettings
 
+	skipAnswer = ->
+		errors = []
+		questionId = $('#question-id').val()
+		userId = $('#user-id').val()
+		
+		data = {}
+		ajaxSettings =
+			type: 'PUT'
+			data: JSON.stringify(data)
+			contextType: 'application/json'
+			processData: false
+			success: -> goToNextQuestion(userId)
+			error: showError
+
+		$.ajax "/user/#{userId}/question/#{questionId}/skip", ajaxSettings
 
 
 	$('#add-question').click addNewQuestion
@@ -94,4 +111,5 @@ $ ->
 			$('#next-question').removeClass('disabled')
 
 	$('#next-question').click saveAnswer
+	$('#skip-question').click skipAnswer
 

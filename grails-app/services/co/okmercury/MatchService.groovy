@@ -48,6 +48,7 @@ class MatchService {
 		return Answer.where {
 			question == answer.question
 			user != answer.user
+			skipped != true
 		}.list()
 	}
 	

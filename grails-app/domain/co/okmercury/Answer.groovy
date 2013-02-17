@@ -7,8 +7,9 @@ class Answer {
 	User user
 	Question question
 	QuestionOption userAnswer
+	String userAnswerExplanation
 	Set<ObjectId> acceptableAnswerIds = []
 	Importance importance
 	Date lastModifiedDate
-	Boolean skipped = false
+	boolean skipped = false
 }
