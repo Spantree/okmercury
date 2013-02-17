@@ -23,11 +23,12 @@ class UrlMappings {
 
 		"/user/${userId}/question/unanswered"(controller: 'question', action: 'nextUnansweredQuestionForUser')
 
+		"/reset"(controller: 'reset', action: 'reset')
+		
 		"/login"(controller: 'login', action: 'login')
 		"/logout"(controller: 'login', action: 'logout')
 		
 		"/"(controller: 'home', action: 'index')
 		"500"(view:'/error')
-		
 	}
 }
