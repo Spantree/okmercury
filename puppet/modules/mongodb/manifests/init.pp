@@ -1,5 +1,5 @@
 class mongodb {
-    package { "mongodb":
+    package { "mongodb-10gen":
         ensure => latest;
     }
 
@@ -8,7 +8,7 @@ class mongodb {
         enable => true,
         hasstatus => true,
         require => [
-            Package['mongodb'],
+            Package['mongodb-10gen'],
             File['/etc/init/mongodb.conf'],
             File['/etc/mongodb.conf']
         ];
