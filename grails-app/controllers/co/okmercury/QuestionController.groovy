@@ -62,6 +62,10 @@ class QuestionController {
 	
 	def nextUnansweredQuestionForUser() {
 		ObjectId questionId = questionService.getNextUnansweredQuestionForUser(session.user)
-		redirect(uri: "/user/${session.user.id}/question/${questionId}")
+		if(questionId) {
+			redirect(uri: "/user/${session.user.id}/question/${questionId}")
+		} else {
+			render(view: 'done')
+		}
 	}
 }
