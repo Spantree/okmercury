@@ -13,10 +13,10 @@
 		<div class="row">
 			<r:img class="span6" uri="images/success-kid.jpg"/>
 		</div>
-		<div class="row main-links" style="margin-top: 20px;">
+		<div class="row main-links" style="margin-top: 20px; margin-left: 0px;">
 			<div>
-				<a id="add-question" class="span2 btn btn-success"><i class="fa-icon-plus"></i>Add Questions</a>
-				<a id="answer-questions" class="span2 btn btn-success"><i class="fa-icon-asterisk"></i>View Matches</a>
+				<a id="add-question" class="btn btn-success"><i class="fa-icon-plus"></i>Add More Questions</a>
+				<a id="answer-questions" class="btn btn-success"><i class="fa-icon-asterisk"></i>View Your Matches</a>
 			</div>
 		</div>
 	</body>

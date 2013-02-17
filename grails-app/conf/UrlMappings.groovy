@@ -25,7 +25,14 @@ class UrlMappings {
 			action = [GET: 'answer', PUT: 'saveAnswer']
 		}
 
+		"/user/${userId}/question/${questionId}/skip"(controller: 'question') {
+			action = [GET: 'answer', PUT: 'skipAnswer']
+		}
+
+		"/user/${userId}/matches"(controller: 'match', action: 'showMatches')
+
 		"/user/${userId}/question/unanswered"(controller: 'question', action: 'nextUnansweredQuestionForUser')
+		"/user/${userId}/question/done"(controller: 'question', action: 'done')
 
 		"/reset"(controller: 'reset', action: 'reset')
 		

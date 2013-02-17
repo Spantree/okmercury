@@ -21,7 +21,8 @@ class UserMatch {
 
 	static mapping = {
 		compoundIndex principalUserId: 1, overallScore: -1
-		compoundIndex principalUserId: 1, principalScore: -1
-		compoundIndex principalUserId: 1, matchScore: -1
+		compoundIndex principalUserId: 1, principalPercentageScore: -1
+		compoundIndex principalUserId: 1, matchPercentageScore: -1
+		compoundIndex principalUserId: 1, questionsInCommon: -1
 	}
 }

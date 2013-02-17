@@ -10,4 +10,16 @@ class User {
 	String passwordHash
 	String gravatarHash
 	List<String> roles
+
+	String getName() {
+		if(firstName && lastName) {
+			return "${firstName} ${lastName}"
+		} else if(firstName) {
+			return firstName
+		} else {
+			return email
+		}
+	}
+
+	static transients = ['name']
 }

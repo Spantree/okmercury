@@ -10,7 +10,7 @@
 				<fieldset>
 					<input type="hidden" id="user-id" name="userId" value="${user.id}"/>
 					<input type="hidden" id="question-id" name="questionId" value="${question.id}"/>
-					
+
 					<legend>${question.question}</legend>
 					<g:each var="option" in="${options}">
 						<label class="radio">
@@ -18,10 +18,7 @@
 	  						${option.answer}
 	  					</label>
 					</g:each>
-					
-					<legend>Explain your answer (optional)</legend>
-					<textarea name="userAnswerExplanation" class="userAnswerExplanation"></textarea>
-					
+
 					<legend>Answer I'll accept...</legend>
 					<g:each var="option" in="${options}">
 						<label class="checkbox">
@@ -31,7 +28,7 @@
 	  						${option.answer}
 	  					</label>
 					</g:each>
-					
+
 					<legend>This question is...</legend>
 					<g:each var="importance" in="${importanceOptions}">
 						<label class="radio">
@@ -42,14 +39,16 @@
 	  						${importance.label}
 	  					</label>
 					</g:each>
-					
+
+					<legend>Explain your answer (optional)</legend>
+					<textarea name="userAnswerExplanation" rows="5" class="userAnswerExplanation span6"></textarea>
 				</fieldset>
 			</div>
 		</div>
 		<div class="row-fluid">
 			<div>
+				<a id="skip-question" class="btn">Skip &gt;</a>
 				<a id="next-question" class="btn btn-success disabled">Save Answer &gt;</a>
-				<a id="skip-question" class="btn btn-warning">Skip &gt;</a>
 			</div>
 		</div>
 	</body>

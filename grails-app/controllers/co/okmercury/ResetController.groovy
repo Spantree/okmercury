@@ -2,8 +2,13 @@ package co.okmercury
 
 import org.bson.types.ObjectId
 
+import com.mongodb.BasicDBObject
+import com.mongodb.DB
+import com.mongodb.DBObject
+
 class ResetController {
 	QuestionService questionService
+	def mongo
 	
 	def questions = [
 		[
@@ -17,32 +22,62 @@ class ResetController {
 			]
 		],
 		[
-			question: "I primarily deal with furnishings for...",
+			question: "How much do you use technology in your events already?",
 			options: [
-				"The Home",
-				"The Office",
-				"Industrial Spaces",
-				"Outdoor Spaces",
-				"Hotel, Restaurant and Hospitality Sector"	
-			]	
-		],
-		[
-			question: "My role can best be described as...",
-			options: [
-				"Retail",
-				"Design and Consulting",
-				"Media and Marketing"
+				"Not at all",
+				"A little here and there",
+				"A fair amount",
+				"Central to our events"
 			]
 		],
 		[
-			question: "I am located...",
+			question: "My primary role is...",
 			options: [
-				"On the East Coast",
-				"In the Midwest",
-				"On the West Coast",
-				"In the South",
-				"Outside the United States"	
-			]	
+				"Event Organizer",
+				"Event Designer",
+				"Supplier",
+				"Software Side"
+			]
+		],
+		[
+			question: "My main intent here is...",
+			options: [
+				"Networking",
+				"Buying",
+				"Selling",
+				"Educational",
+				"Seeing what's out there"
+			]
+		],
+		[
+			question: "How many events do you run each year?",
+			options: [
+				"None",
+				"1 or 2",
+				"3 to 5",
+				"5 to 10",
+				"More than 10",
+				"More than 100"
+			]
+		],
+		[
+			question: "I'd love to learn the most about...",
+			options: [
+				"Hackathons",
+				"Registration Solutions",
+				"Hosted Buyer Solutions",
+				"Attendee Tracking",
+				"Name Badge Technology"
+			]
+		],
+		[
+			question: "My biggest fear with technology is...",
+			options: [
+				"It won't work",
+				"My users won't know how to use it",
+				"I won't know how to use it",
+				"None",
+			]
 		]
 	]
 	
@@ -50,12 +85,14 @@ class ResetController {
 		User user = User.findByEmail('cedric')
 		
 		log.info "Deleting all the things!"
+		DB db = mongo.getDB('okmercury')
+		DBObject allQuery = [:] as BasicDBObject
+		db.userMatch.remove(allQuery)
+		db.questionMatch.remove(allQuery)
+		db.answer.remove(allQuery)
+		db.questionOption.remove(allQuery)
+		db.question.remove(allQuery)
 		
-		QuestionMatch.deleteAll()
-		UserMatch.deleteAll()
-		Answer.deleteAll()
-		QuestionOption.deleteAll()
-		Question.deleteAll()
 		questions.each { Map map ->
 			ObjectId id = new ObjectId()
 			log.info "Adding question: '${map.question}' as ${id}"

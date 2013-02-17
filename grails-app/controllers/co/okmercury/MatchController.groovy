@@ -7,7 +7,7 @@ class MatchController {
 	UserService userService
 	
 	def showMatches() {
-		List matches = matchService.getBestMatchesForUser(session.user)
+		List matches = matchService.getBestMatchesForUser(session.user, params.sort)
 		Map userMap = [:]
 		matches.each { DBObject obj ->
 			userMap[obj.matchUserId] = userService.getById(obj.matchUserId)

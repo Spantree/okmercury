@@ -27,6 +27,7 @@
 							<a href="/logout" class="btn logout fa-icon-signout">
 								Logout ${session.user.email}
 							</a>
+							<okm:bestMatch prefix="We think you should meet" user="${user}"/>
 						</g:if>
 					</g:if>
 				</a>

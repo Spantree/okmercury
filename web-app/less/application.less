@@ -331,6 +331,14 @@ legend {
 	color: white;
 }
 
+.userAnswerExplanation {
+	background-color: mix(@darkBlue, #fff, 30%);
+
+	&:focus {
+		background-color: #fff;
+	}
+}
+
 a.question-link {
 	color: white;
 	clear: both;
@@ -338,4 +346,16 @@ a.question-link {
 
 #error-message {
 	display: none;
+}
+
+.table {
+	color: darken(@darkBlue, 10%);
+	background-color: fadeOut(#fff, 10%);
+
+	th {
+		color: @lightBlue;
+		a {
+			text-decoration: none;
+		}
+	}
 }

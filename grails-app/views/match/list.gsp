@@ -13,21 +13,28 @@
 				<thead>
 					<tr>
 						<th>Name</th>
-						<th>Overall Score</th>
-						<th>Their Score for You</th>
-						<th>Your Score for Them</th>
-						<th>Questions in Common</th>
+						<th><a href="?sort=overallScore"/>Overall Score</a></th>
+						<th><a href="?sort=principalPercentageScore"/>Their Score for You</a></th>
+						<th><a href="?sort=matchPercentageScore"/>Your Score for Them</a></th>
+						<th><a href="?sort=questionsInCommon"/>Questions in Common</th>
 					</tr>
 				</thead>
 				<tbody>
 					<g:each var="match" in="${matches}">
 						<g:set var="matchUser" value="${userMap[match.matchUserId]}"/>
 						<tr>
-							<td>${matchUser.firstName} ${matchUser.lastName}</th>
+							<td>
+								<g:if test="${matchUser.gravatarHash}">
+									<img src="https://secure.gravatar.com/avatar/${matchUser.gravatarHash}?s=30" width="30" height="30"/>
+								</g:if>
+								${matchUser.name}
+							</th>
 							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match.overallScore}"/></td>
 							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match.principalPercentageScore}"/></td>
 							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match.matchPercentageScore}"/></td>
-							<td>&nbsp;</td>
+							<td>
+								<g:if test="${match.questionsInCommon}">${match.questionsInCommon}</g:if>&nbsp;
+							</td>
 						</tr>
 					</g:each>
 				</tbody>

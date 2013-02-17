@@ -39,6 +39,7 @@
 								placeholder="Possible answer ${i}"
 								data-answer-number="${i}"
 								value="${options?.getAt(i-1)}"
+								class="span6"
 							/>
 						</g:else>
 					</g:each>

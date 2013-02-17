@@ -168,10 +168,14 @@ class MatchService {
 		}
 	}
 	
-	List<DBObject> getBestMatchesForUser(User user) {
+	List<DBObject> getBestMatchesForUser(User user, String sortField = 'overallScore') {
 		DBObject criteria = [principalUserId: user.id] as BasicDBObject
-		DBObject sortMap = [overallScore: -1] as BasicDBObject
-		return userMatchCollection.find(criteria).toArray()
+		DBObject sortMap = ["${sortField}": -1] as BasicDBObject
+		return userMatchCollection.find(criteria).toArray()?.sort {
+			println it
+			Float v = it[sortField]
+			return v != null ? -v : -Integer.MAX_VALUE
+		}
 	}
 	
 	DBObject getBestMatchForUser(User user) {
