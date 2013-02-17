@@ -81,6 +81,21 @@ $ ->
 
 			$.ajax "/user/#{userId}/question/#{questionId}", ajaxSettings
 
+	skipAnswer = ->
+		errors = []
+		questionId = $('#question-id').val()
+		userId = $('#user-id').val()
+		
+		data = {}
+		ajaxSettings =
+			type: 'PUT'
+			data: JSON.stringify(data)
+			contextType: 'application/json'
+			processData: false
+			success: -> goToNextQuestion(userId)
+			error: showError
+
+		$.ajax "/user/#{userId}/question/#{questionId}/skip", ajaxSettings
 
 
 	$('#add-question').click addNewQuestion
@@ -96,4 +111,5 @@ $ ->
 			$('#next-question').removeClass('disabled')
 
 	$('#next-question').click saveAnswer
+	$('#skip-question').click skipAnswer
 

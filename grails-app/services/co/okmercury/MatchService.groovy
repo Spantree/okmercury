@@ -15,37 +15,39 @@ class MatchService {
 		User userA = answerA.user;
 		Question questionAnswered = answerA.question
 		
-		Answer.findAll{ question == questionAnswered && user != userA }.each { Answer answerB ->
-			User userB = answerB.person
-			
-			int answerAWeight = answerA.importance.getWeight()
-			int answerBWeight = answerB.importance.getWeight()
-			
-			boolean acceptableForUserA = answerA.acceptableAnswersIds.contains(answerB.userAnswer.id)
-			boolean acceptableForUserB = answerB.acceptableAnswerIds.contains(answerA.userAnswer.id)
-			
-			QuestionMatch qMatch = new QuestionMatch();
-			qMatch.userA = userA
-			qMatch.userB = userB
-			qMatch.pointsPossibleForUserA = answerA.importance.getWeight()
-			
-			if(acceptableForUserA) {
-				qMatch.scoreForUserA = qMatch.pointsPossibleForUserA
+		if(answerA.skipped!=true) {
+			Answer.findAll{ question == questionAnswered && user != userA && skipped != true }.each { Answer answerB ->
+				User userB = answerB.person
+				
+				int answerAWeight = answerA.importance.getWeight()
+				int answerBWeight = answerB.importance.getWeight()
+				
+				boolean acceptableForUserA = answerA.acceptableAnswerIds.contains(answerB.userAnswer.id)
+				boolean acceptableForUserB = answerB.acceptableAnswerIds.contains(answerA.userAnswer.id)
+				
+				QuestionMatch qMatch = new QuestionMatch();
+				qMatch.userA = userA
+				qMatch.userB = userB
+				qMatch.pointsPossibleForUserA = answerA.importance.getWeight()
+				
+				if(acceptableForUserA) {
+					qMatch.scoreForUserA = qMatch.pointsPossibleForUserA
+				}
+				else {
+					qMatch.scoreForUserA = 0
+				}
+				
+				qMatch.pointsPossibleForUserB = answerB.importance.getWeight()
+				
+				if(acceptableForUserB) {
+					qMatch.scoreForUserB = qMatch.pointsPossibleForUserB
+				}
+				else {
+					qMatch.scoreForUserB = 0
+				}
+				
+				qMatch.save()
 			}
-			else {
-				qMatch.scoreForUserA = 0
-			}
-			
-			qMatch.pointsPossibleForUserB = answerB.importance.getWeight()
-			
-			if(acceptableForUserB) {
-				qMatch.scoreForUserB = qMatch.pointsPossibleForUserB
-			}
-			else {
-				qMatch.scoreForUserB = 0
-			}
-			
-			qMatch.save()
 		}
 	}
 	

@@ -48,7 +48,8 @@
 		</div>
 		<div class="row-fluid">
 			<div>
-				<a id="next-question" class="btn btn-success disabled">Next Question &gt;</a>
+				<a id="next-question" class="btn btn-success disabled">Save Answer &gt;</a>
+				<a id="skip-question" class="btn btn-warning">Skip &gt;</a>
 			</div>
 		</div>
 	</body>

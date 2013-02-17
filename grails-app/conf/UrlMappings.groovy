@@ -17,6 +17,10 @@ class UrlMappings {
 		
 		"/testUserMatch"(controller: 'testUserMatch', action: 'test')
 
+		"/user/${userId}/question/${questionId}/skip"(controller: 'question') {
+			action = [GET: 'answer', PUT: 'skipAnswer']
+		}
+		
 		"/user/${userId}/question/${questionId}"(controller: 'question') {
 			action = [GET: 'answer', PUT: 'saveAnswer']
 		}

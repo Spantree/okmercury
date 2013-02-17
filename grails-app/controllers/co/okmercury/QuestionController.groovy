@@ -60,6 +60,17 @@ class QuestionController {
 		}
 	}
 	
+	def skipAnswer() {
+		def json = request.JSON
+		Answer answer = answerService.saveAnswerSkipped(session.user, params.questionId, json.userAnswer)
+		if(answer.errors.hasErrors()) {
+			response.status = 500
+			render ([success: false, errors: answer.errors.allErrors] as JSON).toString()
+		} else {
+			render ([success: true] as JSON).toString()
+		}
+	}
+	
 	def nextUnansweredQuestionForUser() {
 		ObjectId questionId = questionService.getNextUnansweredQuestionForUser(session.user)
 		if(questionId) {
