@@ -16,7 +16,11 @@
 		<div class="row main-links" style="margin-top: 20px; margin-left: 0px;">
 			<div>
 				<a id="add-question" class="btn btn-success"><i class="fa-icon-plus"></i>Add More Questions</a>
-				<a id="answer-questions" class="btn btn-success"><i class="fa-icon-asterisk"></i>View Your Matches</a>
+				<a id="answer-questions" class="btn btn-success"
+					href="<g:createLink uri="/user/${session.user.id}/matches"/>"
+				>
+					<i class="fa-icon-asterisk"></i>View Your Matches
+				</a>
 			</div>
 		</div>
 	</body>
