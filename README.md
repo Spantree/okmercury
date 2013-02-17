@@ -3,6 +3,9 @@
 A blatant plagarism of the [OKCupid Matching Algorithm](http://www.okcupid.com/help/match-percentages) applied to 
 business matchmaking at meetings and conferences.
 
+If you're more visual, check out this [TED Talk](http://ed.ted.com/lessons/inside-okcupid-the-math-of-online-dating-christian-rudder) describing the algorithm, which was released on
+Valentines Day 2013.
+
 Part of a [48-hour hackathon](http://mpitechcon.com/hackathon/).  This project may never be complete.
 
 ## Authors
