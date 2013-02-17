@@ -90,7 +90,7 @@ class QuestionService {
 	}
 	
 	ObjectId getNextUnansweredQuestionForUser(User user) {
-		DBObject obj = collection.findOne([:])
-		return obj['_id']
+		DBObject obj = collection.findOne([userIdsThatHaveAnswered: [$ne: user.id]])
+		return obj?.getAt('_id')
 	}
 }
