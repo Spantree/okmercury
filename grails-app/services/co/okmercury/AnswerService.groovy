@@ -5,6 +5,7 @@ import org.bson.types.ObjectId
 class AnswerService {
 	ImportanceService importanceService
 	QuestionService questionService
+	MatchService matchService
 	
 	void addUserToQuestionsAnswered(User user, Question question) {
 		questionService.collection.update([_id: question.id], ['$addToSet': [userIdsThatHaveAnswered: user.id]])
@@ -30,6 +31,7 @@ class AnswerService {
 		} else {
 			log.info "Successfully saved answer for user ${user.id}"
 			addUserToQuestionsAnswered(user, question)
+			matchService.handleAnswer(answer.id)
 		}
 		return answer
 	}

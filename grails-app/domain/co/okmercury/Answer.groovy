@@ -10,4 +10,5 @@ class Answer {
 	Set<ObjectId> acceptableAnswerIds = []
 	Importance importance
 	Date lastModifiedDate
+	Boolean skipped = false
 }
