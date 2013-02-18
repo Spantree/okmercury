@@ -96,7 +96,7 @@ Run `grails run-app`
 
 ## Special Thanks
 
-Special Thanks to Coleen Crone and Matt Dabney for helping us come up with example questions.
+Special Thanks to Colleen Crone and Matt Dabney for helping us come up with example questions.
 
 ## Copyright and license
 
