@@ -5,8 +5,8 @@ business matchmaking at meetings and conferences.  For more info, see the
 [TED Talk](http://ed.ted.com/lessons/inside-okcupid-the-math-of-online-dating-christian-rudder) they released on Valentines
 Day 2013.
 
-This project was originally part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by Meeting
-Planners International.
+This project was originally part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by [Meeting
+Professionals International](http://www.mpiweb.org/Home).
 
 Also be sure to check out the live demo at http://okmercury.co (login as any username with any password).
 
