@@ -8,6 +8,9 @@ node default {
 	class { "aptupdate": stage => "first" }
 	class { "zip": }
 
+	# Setup
+	class { "okmercury": }
+
 	# Virtual Machines
 	class { "java": }
 
