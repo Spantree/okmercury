@@ -77,7 +77,7 @@ class MatchService {
 	
 	Float getMarginOfError(int commonQuestions) {
 		if(commonQuestions < 2)
-			return 1
+			return 1F
 		else
 			return (1F/commonQuestions.floatValue())
 	}
