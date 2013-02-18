@@ -13,9 +13,8 @@ Part of a [48-hour hackathon](http://mpitechcon.com/hackathon/).  This project m
 * Cedric Hurst
 * Gary Turovsky
 
-## Installation Steps
 
-##Installation Steps
+## Installation Steps
 
 ## Development Environment (IDE)
 
