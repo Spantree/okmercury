@@ -109,7 +109,9 @@ vagrant up
 
 ![okmercury bash IR_Black 272 80 1](https://f.cloud.github.com/assets/530343/167615/a1070f9e-79dd-11e2-81d5-c213fe8d3db7.png)
 
-This command may take a long time on the first run.  It has to download all the 
+This command may take a long time.  On the first run, Vagrant has to download a pristine Ubuntu 12.04 image and install 
+all the infrastructural dependencies to run the app (via Puppet).  On subsequent runs, it will just verify that the 
+virtual machine is consistent with the latest puppet manifests, so that should take less time.
 
 #### SSH into the Vagrant instance
 
@@ -124,11 +126,21 @@ cd /src/okmercury
 grails run-app
 ```
 
+This command may also take a long time on the first run.  On a fresh box, Grails will download all our Java library 
+dependencies before compiling the project code.  On subsequent runs, these libraries will be cached.
+
 #### Visit your local site
 
-Point your browser to http://dev.okmercury.com.local.
+Point your browser to `http://dev.okmercury.com.local`.
 
 If that DNS doesn't resolve, make sure you've edited your `/etc/hosts` file as mentioned above.
+
+#### Bootstrap your environment
+
+We have a few canned questions to get you started.  To replace any existing questions, answers and matches with demo 
+entries, point your browser to `http://dev.mercury.com.local/reset`.
+
+You can reset the environment at any time by visting this address again.
 
 ## Special Thanks
 
