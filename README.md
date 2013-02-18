@@ -61,7 +61,9 @@ Run `vagrant up`
 Run `grails run-app`
 
 
-## License
+## Copyright and license
+
+Copyright 2013 Cedric Hurst and Gary Turovsky.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
