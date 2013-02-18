@@ -172,7 +172,6 @@ class MatchService {
 		DBObject criteria = [principalUserId: user.id] as BasicDBObject
 		DBObject sortMap = ["${sortField}": -1] as BasicDBObject
 		return userMatchCollection.find(criteria).toArray()?.sort {
-			println it
 			Float v = it[sortField]
 			return v != null ? -v : -Integer.MAX_VALUE
 		}

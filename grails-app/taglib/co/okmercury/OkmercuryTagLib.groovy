@@ -15,7 +15,6 @@ class OkmercuryTagLib {
 		User user = session.user
 		String prefix = attrs.prefix ?: 'You should meet'
 		String cssClass = attrs.cssClass ?: ''
-		println user
 		if(user) {
 			DBObject match = matchService.getBestMatchForUser(user)
 			
