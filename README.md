@@ -15,8 +15,33 @@ Check out the live demo at http://okmercury.co
 * Cedric Hurst
 * Gary Turovsky
 
+## Mythology Lesson
+
+In greek mythology, **Cupid** is the god of desire, attraction, and affection.
+
+**Mercury** is the god of financial gain, commerce, eloquence, messages/communication, travelers and luck.
+
+## How it works
+
+Users submit questions they’d like answered by other attendees.
+
+![okmercury-5](https://f.cloud.github.com/assets/530343/166279/cf637856-7996-11e2-908a-f501d5df01dc.png)
+
+Other attendees answer the question for themselves and specify possible answers for the people they’d like to meet.
+
+![okmercury-6](https://f.cloud.github.com/assets/530343/166284/1ff9e4a8-7997-11e2-91a8-84adf259e2dc.png)
+
+Once an attendee is finished answering questions, they can add more or view their matches.
+
+![okmercury-7](https://f.cloud.github.com/assets/530343/166285/2ef831d0-7997-11e2-974d-ff191073682e.png)
+
+We do do a bunch of math and recommend other attendees to meet at the event.
+
+![okmercury-8](https://f.cloud.github.com/assets/530343/166287/43f82e82-7997-11e2-8faa-05d96a19859c.png)
 
 ## Installation Steps
+
+If you want to hack on this project, here's how to get going
 
 ## Development Environment (IDE)
 
