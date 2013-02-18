@@ -6,7 +6,9 @@ business matchmaking at meetings and conferences.
 If you're more visual, check out this [TED Talk](http://ed.ted.com/lessons/inside-okcupid-the-math-of-online-dating-christian-rudder) describing the algorithm, which was released on
 Valentines Day 2013.
 
-Part of a [48-hour hackathon](http://mpitechcon.com/hackathon/).  This project may never be complete.
+Part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by Meeting Planners International.
+
+Check out the live demo at http://okmercury.co
 
 ## Authors
 
@@ -61,7 +63,9 @@ Run `vagrant up`
 Run `grails run-app`
 
 
-## License
+## Copyright and license
+
+Copyright 2013 Cedric Hurst and Gary Turovsky.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
