@@ -68,29 +68,48 @@ MongoDB versions, etc), the Vagrant instance will provide an isolated sandbox
 
 You'll need to follow the steps below to get your environment ready.
 
-#### Install Grails
+#### Tools You'll Need
 
-http://www.grails.org
+Install the following tools to bootstrap your environment
 
-#### Install VirtualBox
-
-https://www.virtualbox.org
-
-#### Install Vagrant
-
-http://www.vagrantup.com
+* Install [Git](https://help.github.com/articles/set-up-git)
+* Install [VirtualBox](https://www.virtualbox.org/)
+* Install [Vagrant](http://www.vagrantup.com/)
 
 #### Modify your host file
 
-We point various services to the virtual machine via host entries.  Your `/etc/hosts` should include the following:
+We point various services to the virtual machine via host entries.  Your `/etc/hosts` on your host machine should 
+include the following:
 
 ```
 192.168.80.100  dev.okmercury.com.local
 ```
 
-#### Start the VM
+#### Checkout the project
 
-Run `vagrant up`
+#### Clone this repository
+
+From the command line, clone this repository with:
+
+```bash
+git clone --recursive git@github.com:Spantree/okmercury.git
+```
+
+If you're new to git and run into trouble with this step, it might be due to missing 
+[github keys](https://help.github.com/articles/generating-ssh-keys).
+
+#### Set up your vagrant instance
+
+Then initialize your vagrant instance with:
+
+```bash
+cd okmercury
+vagrant up
+```
+
+![okmercury bash IR_Black 272 80 1](https://f.cloud.github.com/assets/530343/167615/a1070f9e-79dd-11e2-81d5-c213fe8d3db7.png)
+
+This command may take a long time on the first run.  It has to download all the 
 
 #### SSH into the Vagrant instance
 
@@ -104,6 +123,12 @@ From the vagrant instance shell, run:
 cd /src/okmercury
 grails run-app
 ```
+
+#### Visit your local site
+
+Point your browser to http://dev.okmercury.com.local.
+
+If that DNS doesn't resolve, make sure you've edited your `/etc/hosts` file as mentioned above.
 
 ## Special Thanks
 
