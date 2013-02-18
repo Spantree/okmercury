@@ -131,14 +131,14 @@ dependencies before compiling the project code.  On subsequent runs, these libra
 
 #### Visit your local site
 
-Point your browser to `http://dev.okmercury.com.local`.
+Point your browser to `http://dev.okmercury.com.local`
 
 If that DNS doesn't resolve, make sure you've edited your `/etc/hosts` file as mentioned above.
 
 #### Bootstrap your environment
 
 We have a few canned questions to get you started.  To replace any existing questions, answers and matches with demo 
-entries, point your browser to `http://dev.mercury.com.local/reset`.
+entries, point your browser to `http://dev.mercury.com.local/reset`
 
 You can reset the environment at any time by visting this address again.
 
@@ -165,7 +165,7 @@ This will close the VM.
 #### Remove the virtual machine from disk
 
 If you want to conserve disk space, you can get rid of the disk images at `~/.vagrant.d` 
-and `~/VirtualBox VMs`:
+and `~/VirtualBox VMs`
 
 This repo will here for you should you need it again.
 
