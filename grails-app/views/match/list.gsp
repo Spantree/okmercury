@@ -24,9 +24,7 @@
 						<g:set var="matchUser" value="${userMap[match.matchUserId]}"/>
 						<tr>
 							<td>
-								<g:if test="${matchUser.gravatarHash}">
-									<img src="https://secure.gravatar.com/avatar/${matchUser.gravatarHash}?s=30" width="30" height="30"/>
-								</g:if>
+								<img src="http://gravatar.com/avatar/${matchUser.gravatarHash}?s=30&d=identicon" width="30" height="30"/>
 								${matchUser.name}
 							</th>
 							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match.overallScore}"/></td>

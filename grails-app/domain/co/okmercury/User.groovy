@@ -1,6 +1,7 @@
 package co.okmercury
 
 import org.bson.types.ObjectId
+import com.synergyj.grails.plugins.avatar.util.MD5Util
 
 class User {
 	ObjectId id
@@ -18,6 +19,14 @@ class User {
 			return firstName
 		} else {
 			return email
+		}
+	}
+
+	String getGravatarHash() {
+		if(this.@gravatarHash) {
+			return this.@gravatarHash
+		} else {
+			return MD5Util.md5Hex(email)
 		}
 	}
 
