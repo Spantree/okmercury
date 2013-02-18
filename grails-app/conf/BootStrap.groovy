@@ -24,7 +24,7 @@ class BootStrap {
 			if(user.errors.hasErrors()) {
 				log.error "Error occurred saving user ${props.email}: ${user.errors.allErrors}"
 			} else {
-				log.error "Successfully updates user ${props.email}: ${user.errors.allErrors}"
+				log.info "Successfully updated user ${props.email}"
 			}
 		}
     }
