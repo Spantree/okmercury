@@ -48,7 +48,7 @@ http://www.vagrantup.com
 We point various services to the virtual machine via host entries.  Your `/etc/hosts` should include the following:
 
 ```
-192.168.90.100  dev.okmercury.com.local
+192.168.80.100  dev.okmercury.com.local
 ```
 
 #### Start the VM
