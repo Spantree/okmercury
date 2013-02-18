@@ -142,6 +142,33 @@ entries, point your browser to `http://dev.mercury.com.local/reset`.
 
 You can reset the environment at any time by visting this address again.
 
+#### Stay to-to-date
+
+As mentioned, we may be altering the vagrant configuration up until the time of the presentation, so make sure you have 
+the latest changes by doing the following from your host terminal:
+
+```
+git pull
+vagrant reload
+```
+
+#### Shut down vagrant
+
+When you're all done elasticsearching, you can gracefull shut down your vagrant instance by running:
+
+```
+vagrant halt
+```
+
+This will close the VM.
+
+#### Remove the virtual machine from disk
+
+If you want to conserve disk space, you can get rid of the disk images at `~/.vagrant.d` 
+and `~/VirtualBox VMs`:
+
+This repo will here for you should you need it again.
+
 ## Special Thanks
 
 Special Thanks to Colleen Crone and Matt Dabney for helping us come up with example questions.
