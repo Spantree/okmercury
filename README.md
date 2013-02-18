@@ -85,8 +85,6 @@ include the following:
 192.168.80.100  dev.okmercury.com.local
 ```
 
-#### Checkout the project
-
 #### Clone this repository
 
 From the command line, clone this repository with:
