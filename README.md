@@ -175,7 +175,7 @@ Special Thanks to Colleen Crone and Matt Dabney for helping us come up with exam
 
 ## Copyright and license
 
-Copyright 2013 Cedric Hurst and Gary Turovsky.
+Copyright 2013, Cedric Hurst and Gary Turovsky.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
