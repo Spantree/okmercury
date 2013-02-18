@@ -6,9 +6,10 @@ business matchmaking at meetings and conferences.
 If you're more visual, check out this [TED Talk](http://ed.ted.com/lessons/inside-okcupid-the-math-of-online-dating-christian-rudder) describing the algorithm, which was released on
 Valentines Day 2013.
 
-Part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by Meeting Planners International.
+This project was originally part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by Meeting
+Planners International.
 
-Check out the live demo at http://okmercury.co
+Check out the live demo at http://okmercury.co.
 
 ## Authors
 
@@ -41,7 +42,7 @@ We do do a bunch of math and recommend other attendees to meet at the event.
 
 ## Installation Steps
 
-If you want to hack on this project, here's how to get going
+If you want to hack on this project, here's how to get going...
 
 ## Development Environment (IDE)
 
