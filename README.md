@@ -15,7 +15,7 @@ Also be sure to check out the live demo at http://okmercury.co (login as any use
 **Cedric Hurst:** Principal & Lead Software Engineer at Spantree  
 **Gary Turovsky:** Senior Software Engineer at Spantree & Smartypants Ph.D. Candidate at UIC
 
-By day (and night) we are 50% of the boutique software engineering shop 
+By day (and often night) we are 50% of the boutique software engineering shop 
 [Spantree Technology Group, LLC](http://www.spantree.net).
 
 ## Mythology Lesson
