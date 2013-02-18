@@ -13,8 +13,8 @@ Check out the live demo at http://okmercury.co.
 
 ## Authors
 
-* Cedric Hurst
-* Gary Turovsky
+**Cedric Hurst:** Principal & Lead Software Engineer at Spantree  
+**Gary Turovsky:** Senior Software Engineer at Spantree & Smartypants Ph.D. Candidate at UIC
 
 ## Mythology Lesson
 
