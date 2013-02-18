@@ -2,24 +2,26 @@
 
 A blatant plagiarism of the [OKCupid Matching Algorithm](http://www.okcupid.com/help/match-percentages) applied to 
 business matchmaking at meetings and conferences.  For more info, see the 
-[TED Talk](http://ed.ted.com/lessons/inside-okcupid-the-math-of-online-dating-christian-rudder) they released on Valentines
-Day 2013.
+[TED-Ed Talk](http://ed.ted.com/lessons/inside-okcupid-the-math-of-online-dating-christian-rudder) they released on Valentines
+Day 2013. That talk was very directly the inspiration for this project.
 
-This project was originally part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by Meeting
-Planners International.
+This project was originally part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by [Meeting
+Professionals International](http://www.mpiweb.org/Home).
 
 Also be sure to check out the live demo at http://okmercury.co (login as any username with any password).
 
 ## Authors
 
-**Cedric Hurst:** Principal & Lead Software Engineer at [Spantree]  
-**Gary Turovsky:** Senior Software Engineer at [Spantree] & Smartypants Ph.D. Candidate at [UIC]
+**Cedric Hurst:** Principal & Lead Software Engineer at Spantree  
+**Gary Turovsky:** Senior Software Engineer at Spantree & Smartypants Ph.D. Candidate at UIC
+
+By day (and often night) we are 50% of a boutique software engineering shop called
+[Spantree Technology Group, LLC](http://www.spantree.net).
 
 ## Mythology Lesson
 
-In greek mythology, **Cupid** is the god of desire, attraction, and affection.
-
-**Mercury** is the god of financial gain, commerce, eloquence, messages/communication, travelers and luck.
+In greek mythology, **Cupid** is the god of desire, attraction, and affection. **Mercury** is the god of financial 
+gain, commerce, eloquence, messages/communication, travelers and luck.
 
 ## How it works
 
@@ -47,15 +49,15 @@ For more details, see the presentation we gave during the hackathon, available i
 
 ## Installation Steps
 
-If you want to hack on this project, here's how to get going...
+If you want to hack on this project yourself, here's how to get going...
 
 ### Development Environment (IDE)
 
-#### Download and install STS 3.2.x
+#### Download and install GGTS 3.2.x
 
 http://www.springsource.org/downloads/sts-ggts
 
-#### Install the Groovy, Grails and Gradle plugins
+#### Install GGTG plugins
 
 You can also install the Git plugin if you like, but we mostly use the command line and SourceTree.
 
@@ -85,8 +87,6 @@ include the following:
 192.168.80.100  dev.okmercury.com.local
 ```
 
-#### Checkout the project
-
 #### Clone this repository
 
 From the command line, clone this repository with:
@@ -109,7 +109,9 @@ vagrant up
 
 ![okmercury bash IR_Black 272 80 1](https://f.cloud.github.com/assets/530343/167615/a1070f9e-79dd-11e2-81d5-c213fe8d3db7.png)
 
-This command may take a long time on the first run.  It has to download all the 
+This command may take a long time.  On the first run, Vagrant has to download a pristine Ubuntu 12.04 image and install 
+all the infrastructural dependencies to run the app (via Puppet).  On subsequent runs, it will just verify that the 
+virtual machine is consistent with the latest puppet manifests, so that should take less time.
 
 #### SSH into the Vagrant instance
 
@@ -124,19 +126,61 @@ cd /src/okmercury
 grails run-app
 ```
 
+This command may also take a long time on the first run.  On a fresh box, Grails will download all our Java library 
+dependencies before compiling the project code.  On subsequent runs, these libraries will be cached.
+
 #### Visit your local site
 
-Point your browser to http://dev.okmercury.com.local.
+Point your browser to `http://dev.okmercury.com.local`
 
 If that DNS doesn't resolve, make sure you've edited your `/etc/hosts` file as mentioned above.
+
+#### Bootstrap your environment
+
+We have a few canned questions to get you started.  To replace any existing questions, answers and matches with demo 
+entries, point your browser to `http://dev.mercury.com.local/reset`
+
+You can reset the environment at any time by visting this address again.
+
+#### Stay to-to-date
+
+As mentioned, we may be altering the vagrant configuration up until the time of the presentation, so make sure you have 
+the latest changes by doing the following from your host terminal:
+
+```
+git pull
+vagrant reload
+```
+
+#### Shut down vagrant
+
+When you're all done elasticsearching, you can gracefull shut down your vagrant instance by running:
+
+```
+vagrant halt
+```
+
+This will close the VM.
+
+#### Remove the virtual machine from disk
+
+If you want to conserve disk space, you can get rid of the disk images at `~/.vagrant.d` 
+and `~/VirtualBox VMs`
+
+This repo will here for you should you need it again.
 
 ## Special Thanks
 
 Special Thanks to Colleen Crone and Matt Dabney for helping us come up with example questions.
 
+## Disclaimer
+
+This project is in now way affiliated with OKCupid or its parent company, Humor Rainbow Inc. The likeness to the "OKCupid" 
+name and borrowed design elements from the OKCupid site are entirely tongue-in-cheek.
+
 ## Copyright and license
 
-Copyright 2013 Cedric Hurst and Gary Turovsky.
+Copyright 2013, Cedric Hurst and Gary Turovsky.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this work except in compliance with the License. You may obtain a copy of the License in the LICENSE file, or at:
 
@@ -147,6 +191,8 @@ Unless required by applicable law or agreed to in writing, software distributed 
 [Spantree]: http://www.spantree.net
 [UIC]: http://www.cs.uic.edu/
 
-#### Show us some love
+## Show us some love
 
 Email info@spantree.net if you run into issues.  We'd be happy to help.
+
+OKCupid people, please feel free to send any and all cease and desist letters to cease.and.desist@spantree.net as well.
