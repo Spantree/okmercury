@@ -1,10 +1,11 @@
 # OKMercury
 
 A blatant plagiarism of the [OKCupid Matching Algorithm](http://www.okcupid.com/help/match-percentages) applied to 
-business matchmaking at meetings and conferences.
+business matchmaking at meetings and conferences.  For more info, see the 
+[TED Talk](http://ed.ted.com/lessons/inside-okcupid-the-math-of-online-dating-christian-rudder) they released on Valentines
+Day 2013.
 
-If you're more visual, check out this [TED Talk](http://ed.ted.com/lessons/inside-okcupid-the-math-of-online-dating-christian-rudder) describing the algorithm, which was released on
-Valentines Day 2013.
+If you're more visual, check out this 
 
 This project was originally part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by Meeting
 Planners International.
