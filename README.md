@@ -20,9 +20,8 @@ By day (and often night) we are 50% of a boutique software engineering shop call
 
 ## Mythology Lesson
 
-In greek mythology, **Cupid** is the god of desire, attraction, and affection.
-
-**Mercury** is the god of financial gain, commerce, eloquence, messages/communication, travelers and luck.
+In greek mythology, **Cupid** is the god of desire, attraction, and affection. **Mercury** is the god of financial 
+gain, commerce, eloquence, messages/communication, travelers and luck.
 
 ## How it works
 
