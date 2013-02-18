@@ -14,7 +14,7 @@ class BootStrap {
 		].each { Map props ->
 			User user = User.findByEmail(props.email)
 			if(!user) {
-				user = new User(emails: props.email)
+				user = new User(email: props.email)
 			}
 			user.firstName = props.firstName
 			user.lastName = props.lastName
