@@ -34,7 +34,7 @@ class MatchService {
 			ReentrantLock lock = lockMap[key]
 			if(!lock) {
 				lock = new ReentrantLock()
-				questionLocks[key] = lock
+				lockMap[key] = lock
 			}
 			return lock
 		} catch(Exception e) {
