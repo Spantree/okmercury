@@ -51,11 +51,11 @@ If you want to hack on this project, here's how to get going...
 
 ### Development Environment (IDE)
 
-#### Download and install STS 3.2.x
+#### Download and install GGTS 3.2.x
 
 http://www.springsource.org/downloads/sts-ggts
 
-#### Install the Groovy, Grails and Gradle plugins
+#### Install GGTG plugins
 
 You can also install the Git plugin if you like, but we mostly use the command line and SourceTree.
 
