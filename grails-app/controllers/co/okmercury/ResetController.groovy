@@ -98,6 +98,6 @@ class ResetController {
 			log.info "Adding question: '${map.question}' as ${id}"
 			questionService.updateQuestion(id.toString(), map.question, map.options, user)
 		}
-		render "Done!"
+		[:]
 	}
 }
