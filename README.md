@@ -40,6 +40,11 @@ We do do a bunch of math and recommend other attendees to meet at the event.
 
 ![okmercury-8](https://f.cloud.github.com/assets/530343/166287/43f82e82-7997-11e2-8faa-05d96a19859c.png)
 
+### Hackathon Presentation
+
+* [Keynote](https://github.com/Spantree/okmercury/blob/develop/docs/mpi-presentation.key?raw=true)
+* [PDF](https://github.com/Spantree/okmercury/blob/develop/docs/mpi-presentation.pdf?raw=true
+
 ## Installation Steps
 
 If you want to hack on this project, here's how to get going...
