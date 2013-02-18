@@ -62,7 +62,11 @@ You can also install the Git plugin if you like, but we mostly use the command l
 ### Local Host Environment
 
 We use Vagrant to load all the needed infrastructure onto a virtual machine which can be updated or refreshed at any
-time.  You'll need to follow the steps below to get your environment ready.
+time.  For this project, Vagrant will provision a clean Ubuntu 12.04 image, install the Oracle JDK 7, Grails, MongoDB,
+and Jetty. If you're having trouble running the application on your host machine (wrong version of Java, conflicting 
+MongoDB versions, etc), the Vagrant instance will provide an isolated sandbox
+
+You'll need to follow the steps below to get your environment ready.
 
 #### Install Grails
 
@@ -88,11 +92,18 @@ We point various services to the virtual machine via host entries.  Your `/etc/h
 
 Run `vagrant up`
 
+#### SSH into the Vagrant instance
 
-#### Start the local grails app
+Run `vagrant ssh`
 
-Run `grails run-app`
+#### Start the grails app
 
+From the vagrant instance shell, run:
+
+```bash
+cd /src/okmercury
+grails run-app
+```
 
 ## Special Thanks
 
@@ -110,3 +121,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 [Spantree]: http://www.spantree.net
 [UIC]: http://www.cs.uic.edu/
+
+#### Show us some love
+
+Email info@spantree.net if you run into issues.  We'd be happy to help.
