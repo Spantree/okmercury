@@ -23,7 +23,7 @@ class jetty {
     }
 
     service { "jetty":
-        ensure => running,
+        ensure => stopped,
         enable => true,
         hasstatus => true,
         require => [
@@ -49,15 +49,6 @@ class jetty {
         owner => root,
         mode => 744
 	}
-
-    file { "/usr/share/jetty/collinson.properties":
-        ensure => file,
-        source => "puppet:///modules/jetty/collinson.properties",
-        group => jetty,
-        owner => jetty,
-        mode => 660,
-        require => Package["jetty"]
-    }
 
     file { "/usr/share/jetty/contexts/introcloud.xml":
         ensure => file,
