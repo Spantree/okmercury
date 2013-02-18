@@ -94,6 +94,10 @@ Run `vagrant up`
 Run `grails run-app`
 
 
+## Special Thanks
+
+Special Thanks to Coleen Crone and Matt Dabney for helping us come up with example questions.
+
 ## Copyright and license
 
 Copyright 2013 Cedric Hurst and Gary Turovsky.
