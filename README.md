@@ -50,7 +50,7 @@ For more details, see the presentation we gave during the hackathon, available i
 
 If you want to hack on this project, here's how to get going...
 
-## Development Environment (IDE)
+### Development Environment (IDE)
 
 #### Download and install STS 3.2.x
 
@@ -60,7 +60,7 @@ http://www.springsource.org/downloads/sts-ggts
 
 You can also install the Git plugin if you like, but we mostly use the command line and SourceTree.
 
-## Local Host Environment
+### Local Host Environment
 
 We use Vagrant to load all the needed infrastructure onto a virtual machine which can be updated or refreshed at any
 time.  You'll need to follow the steps below to get your environment ready.
