@@ -171,6 +171,11 @@ This repo will here for you should you need it again.
 
 Special Thanks to Colleen Crone and Matt Dabney for helping us come up with example questions.
 
+## Disclaimer
+
+This project is in now way affiliated with OKCupid or its parent company, Humor Rainbow Inc. The likeness to the "OKCupid" 
+name and borrowed design elements from the OKCupid site are entirely tongue-in-cheek.
+
 ## Copyright and license
 
 Copyright 2013, Cedric Hurst and Gary Turovsky.
@@ -184,6 +189,8 @@ Unless required by applicable law or agreed to in writing, software distributed 
 [Spantree]: http://www.spantree.net
 [UIC]: http://www.cs.uic.edu/
 
-#### Show us some love
+## Show us some love
 
 Email info@spantree.net if you run into issues.  We'd be happy to help.
+
+OKCupid people, please feel free to send any and all cease and desist letters to ceaseanddesist@spantree.net as well.
