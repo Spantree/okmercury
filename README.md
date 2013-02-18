@@ -193,4 +193,4 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 Email info@spantree.net if you run into issues.  We'd be happy to help.
 
-OKCupid people, please feel free to send any and all cease and desist letters to ceaseanddesist@spantree.net as well.
+OKCupid people, please feel free to send any and all cease and desist letters to cease.and.desist@spantree.net as well.
