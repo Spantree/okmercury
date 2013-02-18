@@ -63,6 +63,7 @@ grails.project.dependency.resolution = {
 		//runtime ":redis:1.3.2"
 		runtime ":mongodb:1.1.0.GA"
 		runtime ":joda-time:1.4"
+        compile ":avatar:0.6.3"
 
         build ":tomcat:$grailsVersion"
 
