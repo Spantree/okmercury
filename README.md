@@ -13,8 +13,8 @@ Check out the live demo at http://okmercury.co.
 
 ## Authors
 
-**Cedric Hurst:** Principal & Lead Software Engineer at Spantree  
-**Gary Turovsky:** Senior Software Engineer at Spantree & Smartypants Ph.D. Candidate at UIC
+**Cedric Hurst:** Principal & Lead Software Engineer at [Spantree]
+**Gary Turovsky:** Senior Software Engineer at [Spantree] & Smartypants Ph.D. Candidate at [UIC]
 
 ## Mythology Lesson
 
@@ -104,3 +104,6 @@ Licensed under the Apache License, Version 2.0 (the "License"); you may not use 
 http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+[Spantree]: http://www.spantree.net
+[UIC]: http://www.cs.uic.edu/
