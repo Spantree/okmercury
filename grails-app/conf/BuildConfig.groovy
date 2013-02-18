@@ -42,7 +42,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         runtime 'org.codehaus.gpars:gpars:1.0.0'
-		
+
 		test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
 
@@ -55,14 +55,13 @@ grails.project.dependency.resolution = {
         //runtime ":zipped-resources:1.0"
         //runtime ":cached-resources:1.0"
         //runtime ":yui-minify-resources:0.1.4"
-		
+
 		runtime(":twitter-bootstrap:2.2.2") { excludes 'svn' }
 		runtime(":less-resources:1.3.0.2") { excludes 'svn' }
         runtime ":coffeescript-resources:0.3.2"
 		runtime ":handlebars-resources:0.3.1"
 		//runtime ":redis:1.3.2"
 		runtime ":mongodb:1.1.0.GA"
-		runtime ":joda-time:1.4"
         compile ":avatar:0.6.3"
 
         build ":tomcat:$grailsVersion"
