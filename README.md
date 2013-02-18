@@ -47,7 +47,7 @@ For more details, see the presentation we gave during the hackathon, available i
 
 ## Installation Steps
 
-If you want to hack on this project, here's how to get going...
+If you want to hack on this project yourself, here's how to get going...
 
 ### Development Environment (IDE)
 
