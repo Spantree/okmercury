@@ -13,7 +13,7 @@
 			<g:if test="${messageKey && !created}">
 				<div class="row-fluid">
 					<div class="span12 alert alert-error">
-						Error: <g:message code="${messageKey}"/>
+						<strong>Error:</strong> <g:message code="${messageKey}" args="${[params.user]}"/>
 					</div>
 				</div>
 			</g:if>
@@ -36,7 +36,7 @@
 					</div>
 					<form method="post" action="">
 						<div class="row-fluid">
-							<input class="span12" id="user" name="user" type="text" value="${params.user}" placeholder="username"/>
+							<input class="span12" id="user" name="user" type="text" value="${params.user}" placeholder="email"/>
 							<input class="span12" id="pass" name="pass" type="password" value="" placeholder="password"/>
 						</div>
 						<div class="row-fluid">
