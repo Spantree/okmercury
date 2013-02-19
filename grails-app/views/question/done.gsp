@@ -15,8 +15,12 @@
 		</div>
 		<div class="row main-links" style="margin-top: 20px; margin-left: 0px;">
 			<div>
+				<a id="review-questions" class="btn btn-success"
+					href="<g:createLink uri="/question"/>">
+					<i class="fa-icon-tasks"></i>Review Questions
+				</a>
 				<a id="add-question" class="btn btn-success"><i class="fa-icon-plus"></i>Add More Questions</a>
-				<a id="answer-questions" class="btn btn-success"
+				<a id="view-matches" class="btn btn-success"
 					href="<g:createLink uri="/user/${session.user.id}/matches"/>"
 				>
 					<i class="fa-icon-asterisk"></i>View Your Matches

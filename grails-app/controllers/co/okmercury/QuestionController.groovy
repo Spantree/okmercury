@@ -36,7 +36,17 @@ class QuestionController {
 	}
 
 	def list() {
-		[questions: Question.list()]
+		def answerMap = [:]
+
+		Answer.where {
+			user == session.user
+		}.list().each { Answer answer ->
+			if(answer.question) {
+				answerMap[answer.question.id] = answer
+			}
+		}
+
+		[questions: Question.list(), answerMap: answerMap]
 	}
 
 	def answer() {

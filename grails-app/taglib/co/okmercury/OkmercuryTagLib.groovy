@@ -20,11 +20,18 @@ class OkmercuryTagLib {
 			
 			if(match) {
 				User matchUser = User.get(match.matchUserId)
-				String matchName = matchUser.firstName ?: matchUser.email
-				if(match.overallScore > 0.5) {
-					String formattedPercentage = df.format(match.overallScore)
-					out << "<span class=\"${cssClass}\">${prefix} ${matchName} (${formattedPercentage})!</span>"
-				}
+				out << "<div class=\"${cssClass}\">"
+					if(match.overallScore > 0.5) {
+						out << "<a href=\"/user/${matchUser.id}\">"
+						String formattedPercentage = df.format(match.overallScore)
+						out << "<img src=\"http://gravatar.com/avatar/${matchUser?.gravatarHash}?s=40&d=identicon\" width=\"40\" height=\"40\"/>"
+						out << "${prefix} ${matchUser.name} (${formattedPercentage})!"
+						out << "</a>"
+					} else {
+						out << "Answer more questions to find a match!"
+					}
+				out << "</div>"
+				
 			}
 		}
 	}
