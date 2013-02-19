@@ -2,7 +2,7 @@ class LoginFilters {
 	 def filters = {
         loginCheck(controller: '*', action: '*') {
             before = {
-                if (!session.user && !actionName.equals('login')) {
+                if (!session.user && !['login', 'register', 'created'].contains(actionName)) {
                     redirect(uri: '/login')
                     return false
                 }

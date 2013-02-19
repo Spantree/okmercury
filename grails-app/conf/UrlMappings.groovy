@@ -38,7 +38,11 @@ class UrlMappings {
 		
 		"/login"(controller: 'login', action: 'login')
 		"/logout"(controller: 'login', action: 'logout')
-		
+		"/user/register"(controller: 'login', action: 'register')
+		"/user/${userId}/created"(controller: 'login', action: 'created')
+		"/user/${userId}/gravatar/prompt"(controller: 'gravatar', action: 'prompt')
+		"/user/${userId}/gravatar/signup"(controller: 'gravatar', action: 'signup')
+
 		"/"(controller: 'home', action: 'index')
 		"500"(view:'/error')
 	}

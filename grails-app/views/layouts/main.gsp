@@ -25,15 +25,32 @@
 					<g:if test="${!isLogin}">
 						<g:if test="${session.user}">
 							<a href="/logout" class="btn logout fa-icon-signout">
-								Logout ${session.user.email}
+								Logout ${session.user.name}
 							</a>
-							<okm:bestMatch prefix="We think you should meet" user="${user}"/>
 						</g:if>
 					</g:if>
 				</a>
 			</div>
+			<g:if test="${!isLogin && actionName != 'profile'}">
+				<div class="row">
+					<okm:bestMatch cssClass="bestMatch span12" prefix="We think you should meet" user="${user}"/>
+				</div>
+			</g:if>
 			<g:layoutBody/>
 		</div>
-		<r:layoutResources />
+		<div id="feature-not-available" class="modal hide fade">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>Feature Not Yet Available</h3>
+		  	</div>
+			<div class="modal-body">
+				<p>Sorry, this feature is not yet available.</p>
+				<r:img uri="images/okay-guy.png" class="okay-guy"/>
+		  	</div>
+			<div class="modal-footer">
+				<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
+			</div>
+		</div>
+		<r:layoutResources/>
 	</body>
 </html>

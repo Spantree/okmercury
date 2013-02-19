@@ -1,14 +1,18 @@
 package co.okmercury
 
 import org.bson.types.ObjectId
+
+import com.mongodb.WriteConcern
 import com.synergyj.grails.plugins.avatar.util.MD5Util
 
 class User {
 	ObjectId id
 	String firstName
 	String lastName
+	String jobTitle
+	String companyName
 	String email
-	String passwordHash
+	String password
 	String gravatarHash
 	List<String> roles
 
@@ -25,10 +29,16 @@ class User {
 	String getGravatarHash() {
 		if(this.@gravatarHash) {
 			return this.@gravatarHash
-		} else {
+		} else if(email) {
 			return MD5Util.md5Hex(email)
+		} else {
+			return null
 		}
 	}
 
 	static transients = ['name']
+	
+	static mapping = {
+		writeConcern WriteConcern.SAFE
+	}
 }

@@ -42,7 +42,7 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         runtime 'org.codehaus.gpars:gpars:1.0.0'
-
+		runtime 'org.codehaus.groovy.modules.http-builder:http-builder:0.6'
 		test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
 
@@ -63,12 +63,12 @@ grails.project.dependency.resolution = {
 		//runtime ":redis:1.3.2"
 		runtime ":mongodb:1.1.0.GA"
         compile ":avatar:0.6.3"
-
+		
         build ":tomcat:$grailsVersion"
 
-        runtime ":database-migration:1.2.1"
+		compile ":spring-security-core:1.2.7.3"
 
-        runtime ':cache:1.0.1'
+        runtime ":cache:1.0.1"
 		runtime(":spock:0.7") {
 			exclude "spock-grails-support"
 		}

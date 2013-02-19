@@ -4,7 +4,7 @@ $ ->
 		if(data?.success)
 			$status = $("<input type=\"hidden\" name=\"success\" value=\"true\">")
 			$form.append($status)
-		$form.submit()
+		$form.appendTo('body').submit()
 		return false
 
 	goToQuestionList = -> window.location = '/question'
@@ -85,7 +85,7 @@ $ ->
 		errors = []
 		questionId = $('#question-id').val()
 		userId = $('#user-id').val()
-		
+
 		data = {}
 		ajaxSettings =
 			type: 'PUT'
@@ -97,6 +97,9 @@ $ ->
 
 		$.ajax "/user/#{userId}/question/#{questionId}/skip", ajaxSettings
 
+	featureNotAvailable = ->
+		$('#feature-not-available').modal()
+		return false
 
 	$('#add-question').click addNewQuestion
 
@@ -112,4 +115,10 @@ $ ->
 
 	$('#next-question').click saveAnswer
 	$('#skip-question').click skipAnswer
+
+	$('#remember').click featureNotAvailable
+	$('.forgot a').click featureNotAvailable
+	$('.facebook_connect').click featureNotAvailable
+	$('.twitter_connect').click featureNotAvailable
+	$('.linkedin_connect').click featureNotAvailable
 
