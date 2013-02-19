@@ -12,21 +12,32 @@
 			</div>
 		</div>
 		<div class="row main-links">
-			<a id="answer-questions" class="span2 btn btn-success"
-				href="<g:createLink uri="/user/${session.user.id}/question/unanswered"/>"
-			>
-				<i class="fa-icon-ok"></i>Answer Questions
-			</a>
+			<g:if test="${session.user.email != 'admin@okmercury.co'}">
+				<a id="answer-questions" class="span2 btn btn-success"
+					href="<g:createLink uri="/user/${session.user.id}/question/unanswered"/>"
+				>
+					<i class="fa-icon-ok"></i>Answer Questions
+				</a>
+			</g:if>
+			<g:else>
+				<a id="reset" class="span2 btn btn-danger"
+					href="<g:createLink uri="/reset"/>"
+				>
+					<i class="fa-icon-trash"></i>Reset Application
+				</a>
+			</g:else>
 			<a id="add-question" class="span2 btn btn-success"><i class="fa-icon-plus"></i>Add Questions</a>
 			<a id="review-questions" class="span2 btn btn-success"
 				href="<g:createLink uri="/question"/>">
 				<i class="fa-icon-tasks"></i>Review Questions
 			</a>
-			<a id="view-matches" class="span2 btn btn-success"
-				href="<g:createLink uri="/user/${session.user.id}/matches"/>"
-			>
-				<i class="fa-icon-asterisk"></i>View Matches
-			</a>
+			<g:if test="${session.user.email != 'admin@okmercury.co'}">
+				<a id="view-matches" class="span2 btn btn-success"
+					href="<g:createLink uri="/user/${session.user.id}/matches"/>"
+				>
+					<i class="fa-icon-asterisk"></i>View Matches
+				</a>
+			</g:if>
 		</div>
 	</body>
 </html>
