@@ -16,9 +16,9 @@
 		<div class="row main-links" style="margin-top: 20px; margin-left: 0px;">
 			<div>
 				<a id="go-home" class="btn btn-success"
-					href="<g:createLink uri="/"/>"
+					href="<g:createLink uri="/logout"/>"
 				>
-					<i class="fa-icon-home"></i>Go Back to the Home Screen
+					<i class="fa-icon-signin"></i>Log back in
 				</a>
 			</div>
 		</div>
