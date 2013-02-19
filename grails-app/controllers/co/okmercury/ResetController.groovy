@@ -123,12 +123,12 @@ class ResetController {
 				"Less than 5000 sq ft of floor space",
 				"5000 - 10,000 sq ft of floor space",
 				"10,001 - 50,000 sq ft of floor space",
-				"More than 50,001 sq ft of floor space",
+				"More than 50,000 sq ft of floor space",
 				"N/A"
 			]
 		],
 		[
-			question: "My average event needs...",
+			question: "My average event uses...",
 			options: [
 				"Less than 5000 sq ft of floor space",
 				"5000 - 10,000 sq ft of floor space",
@@ -144,7 +144,7 @@ class ResetController {
 				"Resort-like atmosphere",
 				"Proximity to Industry",
 				"Accessibility to Public Transportation",
-				"Facilities and Accomodations"
+				"Facilities and Accommodations"
 			]
 		],
 		[
@@ -169,15 +169,15 @@ class ResetController {
 			companyName: "Spantree Technology Group, LLC", jobTitle: "Senior Software Engineer"
 		],
 		[
-			firstName: "Hilary", lastName: "Freemason", email: "hmason@notarealemail.com",
+			firstName: "Hilary", lastName: "Freemason", email: "hilary.freemason@hilton.com",
 			companyName: "Hilton Hotels", jobTitle: "CMO", gravatarHash: "c87a84cf3b06077036deade1b44aa45e"	
 		],
 		[
-			firstName: "Tom", lastName: "Preston", email: "mojombo@notarealemail.com",
+			firstName: "Tom", lastName: "Preston", email: "mojombo@ee.cc",
 			companyName: "Extreme Events", jobTitle: "Cofounder", gravatarHash: "25c7c18223fb42a4c6ae1c8db6f50f9b"	
 		],
 		[
-			firstName: "Rebecca", lastName: "Murray", email: "rmurphey@notarealemail.com",
+			firstName: "Rebecca", lastName: "Murray", email: "rmurphey@austin.gov",
 			companyName: "The City of Austin", jobTitle: "Director", gravatarHash: "0177cdce6af15e10db15b6bf5dc4e0b0"	
 		]
 	]
@@ -229,7 +229,7 @@ class ResetController {
 				it.answer != "I am currently unemployed"
 			}
 			users.each { User user ->
-				boolean shouldAnswer = r.nextInt() % 10 != 7
+				boolean shouldAnswer = r.nextInt() % 5 != 0
 				if(shouldAnswer) {
 					boolean shouldSkip = r.nextInt() % 10 == 0
 					if(shouldSkip) {
@@ -243,8 +243,8 @@ class ResetController {
 						Importance importance = importances[0]
 						List<String> acceptableAnswerIds = []
 						if(importance != Importance.IRRELEVANT) {
-							int numberAcceptable = RandomUtils.nextInt(r, options.size()-1)
-							acceptableAnswerIds = options[1..numberAcceptable].collect { it.id.toString() }
+							int numberAcceptable = Math.min(RandomUtils.nextInt(r, options.size()-1)+2, options.size()-2)
+							acceptableAnswerIds = options[0..numberAcceptable].collect { it.id.toString() }
 						}
 						answerService.saveAnswer(
 							user,
