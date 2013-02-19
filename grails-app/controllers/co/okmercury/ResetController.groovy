@@ -23,7 +23,7 @@ class ResetController {
 				"A small company (2-10 employees)",
 				"A medium-sized company (10-200 employees)",
 				"A large company (200+ employees)",
-				"I am currently unemployed"
+				"I am currently looking for employment"
 			]
 		],
 		[
@@ -76,6 +76,78 @@ class ResetController {
 			]
 		],
 		[
+			question: "I primarily to business in...",
+			options: [
+				"The Midwest",
+				"The East Coast",
+				"The West Coast",
+				"Outside the United States",
+				"All Over"
+			]
+		],
+		[
+			question: "Are you a Mac or PC?",
+			options: [
+				"Mac",
+				"PC",
+				"None of the Above"
+			]
+		],
+		[
+			question: "At events, I prefer attendee contact information to be...",
+			options: [
+				"A closely-guarded secret",
+				"Shared with everyone"
+			]
+		],
+		[
+			question: "At my events, I prefer attendee contact information to be...",
+			options: [
+				"A closely-guarded secret",
+				"Shared with Everyone"
+			]
+		],
+		[
+			question: "My average event hosts...",
+			options: [
+				"Less than 100 people",
+				"100 - 250 people",
+				"251 - 1000 people",
+				"More than 1000 people",
+				"N/A"
+			]
+		],
+		[
+			question: "My average event needs...",
+			options: [
+				"Less than 5000 sq ft of floor space",
+				"5000 - 10,000 sq ft of floor space",
+				"10,001 - 50,000 sq ft of floor space",
+				"More than 50,001 sq ft of floor space",
+				"N/A"
+			]
+		],
+		[
+			question: "My average event needs...",
+			options: [
+				"Less than 5000 sq ft of floor space",
+				"5000 - 10,000 sq ft of floor space",
+				"10,001 - 50,000 sq ft of floor space",
+				"50,001 - 100,000 sq ft of floor space",
+				"More than 100,000 sq ft of floor space"
+			]
+		],
+		[
+			question: "The most important aspect for my events' location is...",
+			options: [
+				"Cost",
+				"Resort-like atmosphere",
+				"Proximity to Industry",
+				"Accessibility to Public Transportation",
+				"Facilities and Accomodations"
+			]
+		],
+		[
 			question: "My biggest fear with technology is...",
 			options: [
 				"It won't work",
@@ -83,7 +155,8 @@ class ResetController {
 				"I won't know how to use it",
 				"None",
 			]
-		]
+		],
+		
 	]
 
 	def userMaps = [
@@ -97,7 +170,7 @@ class ResetController {
 		],
 		[
 			firstName: "Hilary", lastName: "Freemason", email: "hmason@notarealemail.com",
-			companyName: "Bitly", jobTitle: "Chief Scientist", gravatarHash: "c87a84cf3b06077036deade1b44aa45e"	
+			companyName: "Hilton Hotels", jobTitle: "CMO", gravatarHash: "c87a84cf3b06077036deade1b44aa45e"	
 		],
 		[
 			firstName: "Tom", lastName: "Preston", email: "mojombo@notarealemail.com",
@@ -105,7 +178,7 @@ class ResetController {
 		],
 		[
 			firstName: "Rebecca", lastName: "Murray", email: "rmurphey@notarealemail.com",
-			companyName: "New Orleans Merchants Association", jobTitle: "Director", gravatarHash: "0177cdce6af15e10db15b6bf5dc4e0b0"	
+			companyName: "The City of Austin", jobTitle: "Director", gravatarHash: "0177cdce6af15e10db15b6bf5dc4e0b0"	
 		]
 	]
 
@@ -113,7 +186,7 @@ class ResetController {
 		log.info "Deleting all the things!"
 		DB db = mongo.getDB('okmercury')
 		DBObject allQuery = [:] as BasicDBObject
-		db.userMatch.remove(allQuery, WriteConcern.SAFE)
+		db.userMatch.remove([email: [$ne: 'admin@okmercury.co']], WriteConcern.SAFE)
 		db.questionMatch.remove(allQuery, WriteConcern.SAFE)
 		db.answer.remove(allQuery, WriteConcern.SAFE)
 		db.questionOption.remove(allQuery, WriteConcern.SAFE)
@@ -156,29 +229,32 @@ class ResetController {
 				it.answer != "I am currently unemployed"
 			}
 			users.each { User user ->
-				boolean shouldSkip = r.nextInt() % 10 == 0
-				if(shouldSkip) {
-					answerService.saveAnswerSkipped(user, question.id.toString(), "")
-				} else {
-					Collections.shuffle(options, r)
-					Collections.shuffle(importances, r)
-					QuestionOption userAnswer = options[0]
-	
-					Collections.shuffle(options, r)
-					Importance importance = importances[0]
-					List<String> acceptableAnswerIds = []
-					if(importance != Importance.IRRELEVANT) {
-						int numberAcceptable = RandomUtils.nextInt(r, options.size()-1)+1
-						acceptableAnswerIds = options[1..numberAcceptable].collect { it.id.toString() }
+				boolean shouldAnswer = r.nextInt() % 10 != 7
+				if(shouldAnswer) {
+					boolean shouldSkip = r.nextInt() % 10 == 0
+					if(shouldSkip) {
+						answerService.saveAnswerSkipped(user, question.id.toString(), "")
+					} else {
+						Collections.shuffle(options, r)
+						Collections.shuffle(importances, r)
+						QuestionOption userAnswer = options[0]
+		
+						Collections.shuffle(options, r)
+						Importance importance = importances[0]
+						List<String> acceptableAnswerIds = []
+						if(importance != Importance.IRRELEVANT) {
+							int numberAcceptable = RandomUtils.nextInt(r, options.size()-1)
+							acceptableAnswerIds = options[1..numberAcceptable].collect { it.id.toString() }
+						}
+						answerService.saveAnswer(
+							user,
+							question.id.toString(),
+							userAnswer.id.toString(),
+							acceptableAnswerIds,
+							importance.name(),
+							""
+						)
 					}
-					answerService.saveAnswer(
-						user,
-						question.id.toString(),
-						userAnswer.id.toString(),
-						acceptableAnswerIds,
-						importance.name(),
-						""
-					)
 				}
 			}
 		}
