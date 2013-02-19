@@ -229,31 +229,33 @@ class ResetController {
 				it.answer != "I am currently unemployed"
 			}
 			users.each { User user ->
-				boolean shouldAnswer = r.nextInt() % 5 != 0
-				if(shouldAnswer) {
-					boolean shouldSkip = r.nextInt() % 10 == 0
-					if(shouldSkip) {
-						answerService.saveAnswerSkipped(user, question.id.toString(), "")
-					} else {
-						Collections.shuffle(options, r)
-						Collections.shuffle(importances, r)
-						QuestionOption userAnswer = options[0]
-		
-						Collections.shuffle(options, r)
-						Importance importance = importances[0]
-						List<String> acceptableAnswerIds = []
-						if(importance != Importance.IRRELEVANT) {
-							int numberAcceptable = Math.min(RandomUtils.nextInt(r, options.size()-1)+2, options.size()-2)
-							acceptableAnswerIds = options[0..numberAcceptable].collect { it.id.toString() }
+				if(user.email != 'admin@okmercury.co') {
+					boolean shouldAnswer = r.nextInt() % 5 != 0
+					if(shouldAnswer) {
+						boolean shouldSkip = r.nextInt() % 10 == 0
+						if(shouldSkip) {
+							answerService.saveAnswerSkipped(user, question.id.toString(), "")
+						} else {
+							Collections.shuffle(options, r)
+							Collections.shuffle(importances, r)
+							QuestionOption userAnswer = options[0]
+			
+							Collections.shuffle(options, r)
+							Importance importance = importances[0]
+							List<String> acceptableAnswerIds = []
+							if(importance != Importance.IRRELEVANT) {
+								int numberAcceptable = Math.min(RandomUtils.nextInt(r, options.size()-1)+2, options.size()-2)
+								acceptableAnswerIds = options[0..numberAcceptable].collect { it.id.toString() }
+							}
+							answerService.saveAnswer(
+								user,
+								question.id.toString(),
+								userAnswer.id.toString(),
+								acceptableAnswerIds,
+								importance.name(),
+								""
+							)
 						}
-						answerService.saveAnswer(
-							user,
-							question.id.toString(),
-							userAnswer.id.toString(),
-							acceptableAnswerIds,
-							importance.name(),
-							""
-						)
 					}
 				}
 			}
