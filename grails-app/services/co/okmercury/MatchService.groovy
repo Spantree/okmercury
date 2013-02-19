@@ -82,44 +82,55 @@ class MatchService {
 			return (1F/commonQuestions.floatValue())
 	}
 	
-	Float scorePercentage(int points, int pointsPossible) {
-		return points.floatValue()/pointsPossible.floatValue()
+	Float scorePercentage(int points, int pointsPossible, Float marginOfError) {
+		return Math.max(0, points.floatValue()/pointsPossible.floatValue()-marginOfError)
 	}
-	
+
+	DBObject getQuestionMatchSums(User userA, User userB, User principalUser) {
+		DBObject match = [userAId: userA.id, userBId: userB.id] as BasicDBObject
+
+		log.info "Retrieving QuestionMatch sums for ${match}"
+
+		DBObject group = [
+			_id: [userAId: '$userAId', userBId: '$userBId'],
+			questionsInCommon: [$sum: 1]
+		] as BasicDBObject
+
+		if(userA == principalUser) {
+			group.principalPoints = [$sum: '$scoreForUserA']
+			group.principalPointsPossible = [$sum : '$pointsPossibleForUserA']
+			group.matchPoints = [$sum: '$scoreForUserB']
+			group.matchPointsPossible = [$sum :'$pointsPossibleForUserB']
+		} else {
+			group.principalPoints = [$sum: '$scoreForUserB']
+			group.principalPointsPossible = [$sum : '$pointsPossibleForUserB']
+			group.matchPoints = [$sum: '$scoreForUserA']
+			group.matchPointsPossible = [$sum :'$pointsPossibleForUserA']
+		}
+
+		AggregationOutput out = questionMatchCollection.aggregate([$match: match], [$group: group])
+
+		Iterator<DBObject> resultsIterator = out.results().iterator()
+		return resultsIterator.hasNext() ? resultsIterator.next() : null
+	}
+
 	void updateUserMatch(User principalUser, User matchUser, User userA) {
 		String key = "${principalUser.id}->${matchUser.id}"
 		ReentrantLock lock = getLock(userMatchHyperLock, userMatchLocks, key)
 		lock.lock()
 		try {
 			User userB = (userA == principalUser ? matchUser : principalUser)
-			
-			DBObject match = [userAId: userA.id, userBId: userB.id] as BasicDBObject
-			
-			log.info "Match: ${match}"
-			
-			DBObject group = [
-				_id: [userAId: '$userAId', userBId: '$userBId'],
-				principalPoints: [$sum: '$scoreForUserA'],
-				principalPointsPossible: [$sum : '$pointsPossibleForUserA'],
-				matchPoints: [$sum: '$scoreForUserB'],
-				matchPointsPossible: [$sum :'$pointsPossibleForUserB'],
-				questionsInCommon: [$sum: 1]
-			] as BasicDBObject
-		
-			AggregationOutput out = questionMatchCollection.aggregate([$match: match], [$group: group])
-			
-			Iterator<DBObject> resultsIterator = out.results().iterator()
-			
-			if(resultsIterator.hasNext()) {
-				DBObject results = resultsIterator.next()
-				
+
+			DBObject results = getQuestionMatchSums(userA, userB, principalUser)
+
+			if(results) {
 				Float marginOfError = getMarginOfError(results.questionsInCommon)
-				Float principalPercentageScore = scorePercentage(results.principalPoints, results.principalPointsPossible)
-				Float matchPercentageScore = scorePercentage(results.matchPoints, results.matchPointsPossible)
-				Float overallScore = Math.min((1F-marginOfError), Math.sqrt(principalPercentageScore * matchPercentageScore))
-				
+				Float principalPercentageScore = scorePercentage(results.principalPoints, results.principalPointsPossible, marginOfError)
+				Float matchPercentageScore = scorePercentage(results.matchPoints, results.matchPointsPossible, marginOfError)
+				Float overallScore = Math.max(0, Math.sqrt(principalPercentageScore * matchPercentageScore)-marginOfError)
+
 				DBObject criteria = [principalUserId: principalUser.id, matchUserId: matchUser.id] as BasicDBObject
-				
+
 				DBObject update = [$set: [
 					principalPoints: results.principalPoints,
 					principalPointsPossible: results.principalPointsPossible,
@@ -130,11 +141,11 @@ class MatchService {
 					questionsInCommon: results.questionsInCommon,
 					overallScore: overallScore
 				]] as BasicDBObject
-				
+
 				update['$set'].putAll(criteria)
-				
-				log.info "criteria: ${criteria}"
-				
+
+				log.info "Upserting UserMatch for ${criteria}"
+
 				userMatchCollection.update(criteria, update, true, false, WriteConcern.SAFE)
 			} else {
 				log.error "No aggregation results found for user match ${key}"
@@ -143,7 +154,7 @@ class MatchService {
 			lock.unlock()
 		}
 	}
-	
+
 	def handleAnswer(ObjectId answerId) {
 		Answer answer = Answer.get(answerId)
 		ReentrantLock lock = getLock(questionHyperLock, questionLocks, answer.question.id)
@@ -167,7 +178,7 @@ class MatchService {
 			lock.unlock()
 		}
 	}
-	
+
 	List<DBObject> getBestMatchesForUser(User user, String sortField = 'overallScore') {
 		DBObject criteria = [principalUserId: user.id] as BasicDBObject
 		DBObject sortMap = ["${sortField}": -1] as BasicDBObject
@@ -176,7 +187,7 @@ class MatchService {
 			return v != null ? -v : -Integer.MAX_VALUE
 		}
 	}
-	
+
 	DBObject getBestMatchForUser(User user) {
 		List matches = getBestMatchesForUser(user)
 		return matches ? matches[0] : null
