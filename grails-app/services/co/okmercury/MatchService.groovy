@@ -139,7 +139,8 @@ class MatchService {
 					matchPointsPossible: results.matchPointsPossible,
 					matchPercentageScore: matchPercentageScore,
 					questionsInCommon: results.questionsInCommon,
-					overallScore: overallScore
+					overallScore: overallScore,
+					marginOfError: marginOfError
 				]] as BasicDBObject
 
 				update['$set'].putAll(criteria)

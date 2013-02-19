@@ -17,6 +17,7 @@
 						<th><a href="?sort=principalPercentageScore"/>Their Score for You</a></th>
 						<th><a href="?sort=matchPercentageScore"/>Your Score for Them</a></th>
 						<th><a href="?sort=questionsInCommon"/>Questions in Common</th>
+						<th><a href="?sort=marginOfError"/>Margin of Error</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -34,6 +35,9 @@
 							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match?.matchPercentageScore}"/></td>
 							<td>
 								<g:if test="${match.questionsInCommon}">${match?.questionsInCommon}</g:if>&nbsp;
+							</td>
+							<td>
+								<g:formatNumber type="percent" minFractionDigits="2" number="${match?.marginOfError}"/>
 							</td>
 						</tr>
 					</g:each>

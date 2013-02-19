@@ -19,6 +19,8 @@ class UserMatch {
 	
 	Float overallScore
 
+	Float marginOfError
+	
 	static mapping = {
 		compoundIndex principalUserId: 1, overallScore: -1
 		compoundIndex principalUserId: 1, principalPercentageScore: -1
