@@ -12,17 +12,17 @@
 			</div>
 		</div>
 		<div class="row main-links">
-			<a id="add-question" class="span2 btn btn-success"><i class="fa-icon-plus"></i>Add Questions</a>
-			<a id="review-questions" class="span2 btn btn-success"
-				href="<g:createLink uri="/question"/>">
-				<i class="fa-icon-tasks"></i>Review Questions
-			</a>
 			<a id="answer-questions" class="span2 btn btn-success"
 				href="<g:createLink uri="/user/${session.user.id}/question/unanswered"/>"
 			>
 				<i class="fa-icon-ok"></i>Answer Questions
 			</a>
-			<a id="answer-questions" class="span2 btn btn-success"
+			<a id="add-question" class="span2 btn btn-success"><i class="fa-icon-plus"></i>Add Questions</a>
+			<a id="review-questions" class="span2 btn btn-success"
+				href="<g:createLink uri="/question"/>">
+				<i class="fa-icon-tasks"></i>Review Questions
+			</a>
+			<a id="view-matches" class="span2 btn btn-success"
 				href="<g:createLink uri="/user/${session.user.id}/matches"/>"
 			>
 				<i class="fa-icon-asterisk"></i>View Matches
