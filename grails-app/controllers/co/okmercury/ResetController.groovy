@@ -179,7 +179,20 @@ class ResetController {
 		[
 			firstName: "Rebecca", lastName: "Murray", email: "rmurphey@austin.gov",
 			companyName: "The City of Austin", jobTitle: "Director", gravatarHash: "0177cdce6af15e10db15b6bf5dc4e0b0"	
-		]
+		],
+		[
+			firstName: "Nate", lastName: "Welsh", email: "nate@zombo.com",
+			companyName: "The Zombo Group", jobTitle: "Founder", gravatarHash: "5c50a13d7b1cd03476528ed4e4b9ef73"	
+		],
+		[
+			firstName: "Simon", lastName: "Brooks", email: "sbrooks@zombo.com",
+			companyName: "Coca Cola", jobTitle: "Event Planner", gravatarHash: "368346708a485060d31f77677a21d2a5"
+		],
+		[
+			firstName: "Nicholas", lastName: "Nickels", email: "nickels@nickel.com",
+			companyName: "Nickel Ventures", jobTitle: "Principal", gravatarHash: "872efa6f38c84c8ce289784b5221f360"
+		],
+		
 	]
 
 	def deleteStuff() {
