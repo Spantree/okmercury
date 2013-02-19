@@ -66,8 +66,6 @@ grails.project.dependency.resolution = {
 
         build ":tomcat:$grailsVersion"
 
-        runtime ":database-migration:1.2.1"
-
         runtime ':cache:1.0.1'
 		runtime(":spock:0.7") {
 			exclude "spock-grails-support"
