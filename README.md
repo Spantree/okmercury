@@ -139,16 +139,17 @@ Point your browser to `http://dev.okmercury.com.local`
 
 If that DNS doesn't resolve, make sure you've edited your `/etc/hosts` file as mentioned above.
 
-At the time of writing, you can login with any username and password and the account will be created if it doesn't 
-already exist. We also have some built-in accounts (with preset avatars): `cedric`, `gary`, `jane`, `rebecca`, `john`, 
-`paul` and `kim`.
+The first time you login, you'll need to use the administrator credentials: `admin@okmercury.co`/`password`.
 
 #### Bootstrap or reset your questions and answers
 
-We have a few canned questions to get you started.  To replace any existing questions, answers and matches with demo 
+We have a few canned questions and answers to get you started.  To replace any existing questions, answers and matches with demo 
 entries, point your browser to the hidden url `http://dev.mercury.com.local/reset`
 
 ![SystemUIServer-1](https://f.cloud.github.com/assets/530343/167964/4bdc4896-79eb-11e2-98bf-57e798485af2.png)
+
+You'll be prompted to log in again.  At this time you can register a new account with some sample data to start finding 
+matches.
 
 You can reset the environment at any time by visting this address again.
 
