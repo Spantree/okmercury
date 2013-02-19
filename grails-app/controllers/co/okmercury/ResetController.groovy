@@ -101,13 +101,6 @@ class ResetController {
 			]
 		],
 		[
-			question: "At my events, I prefer attendee contact information to be...",
-			options: [
-				"A closely-guarded secret",
-				"Shared with Everyone"
-			]
-		],
-		[
 			question: "My average event hosts...",
 			options: [
 				"Less than 100 people",
@@ -155,8 +148,7 @@ class ResetController {
 				"I won't know how to use it",
 				"None",
 			]
-		],
-		
+		]
 	]
 
 	def userMaps = [
