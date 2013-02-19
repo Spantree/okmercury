@@ -63,12 +63,10 @@ grails.project.dependency.resolution = {
 		//runtime ":redis:1.3.2"
 		runtime ":mongodb:1.1.0.GA"
         compile ":avatar:0.6.3"
-		
         build ":tomcat:$grailsVersion"
-
 		compile ":spring-security-core:1.2.7.3"
-
         runtime ":cache:1.0.1"
+        runtime ":database-migration:1.2.1"
 		runtime(":spock:0.7") {
 			exclude "spock-grails-support"
 		}
