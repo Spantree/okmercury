@@ -16,6 +16,7 @@ grails.project.dependency.resolution = {
     inherits("global") {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
         // excludes 'ehcache'
+        excludes "hibernate"
     }
     log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
@@ -48,8 +49,8 @@ grails.project.dependency.resolution = {
 
     plugins {
         // runtime ":hibernate:$grailsVersion"
-        runtime ":jquery:1.8.3"
-        runtime ":resources:1.2.RC2"
+        runtime(":jquery:1.8.3") { excludes "hibernate"}
+        runtime(":resources:1.2.RC2") { excludes "hibernate"}
 
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0"
@@ -58,19 +59,14 @@ grails.project.dependency.resolution = {
 
 		runtime(":twitter-bootstrap:2.2.2") { excludes 'svn' }
 		runtime(":less-resources:1.3.0.2") { excludes 'svn' }
-        runtime ":coffeescript-resources:0.3.2"
-		runtime ":handlebars-resources:0.3.1"
+        runtime(":coffeescript-resources:0.3.2") { excludes "hibernate"}
+		runtime(":handlebars-resources:0.3.1") { excludes "hibernate" }
 		//runtime ":redis:1.3.2"
-		runtime ":mongodb:1.1.0.GA"
-        compile ":avatar:0.6.3"
-		
-        build ":tomcat:$grailsVersion"
-
-		compile ":spring-security-core:1.2.7.3"
-
-        runtime ":cache:1.0.1"
-		runtime(":spock:0.7") {
-			exclude "spock-grails-support"
-		}
+		runtime(":mongodb:1.1.0.GA") { excludes "hibernate" }
+        compile(":avatar:0.6.3") { excludes "hibernate" }
+        build(":tomcat:$grailsVersion") { excludes "hibernate" }
+		compile(":spring-security-core:1.2.7.3") { excludes "hibernate" }
+        runtime(":cache:1.0.1"){ excludes "hibernate" }
+		runtime(":spock:0.7") { excludes "spock-grails-support", "hibernate" }
     }
 }
