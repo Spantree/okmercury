@@ -65,6 +65,8 @@ grails.gorm.default.constraints = {
   '*'(nullable: true)
 }
 
+// grails.plugins.springsecurity.password.algorithm = 'bcrypt'
+
 environments {
     development {
         grails.logging.jul.usebridge = true

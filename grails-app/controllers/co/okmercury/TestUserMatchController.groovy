@@ -5,7 +5,7 @@ import org.bson.types.ObjectId
 class TestUserMatchController {
 	def questionService
 	def answerService
-	
+
 	def testQuestions = [
 		[
 			qid: "${new ObjectId()}",
@@ -19,12 +19,12 @@ class TestUserMatchController {
 		]
 	]
 
-	
+
 	def test = {
 		def questions = []
 		User user1 = User.first()
 		User user2 = User.last()
-		
+
 		testQuestions.each{
 			Question q = questionService.updateQuestion( it.qid, it.questionText, it.optionStrings )
 			
