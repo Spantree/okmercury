@@ -24,14 +24,16 @@
 						<g:set var="matchUser" value="${userMap[match.matchUserId]}"/>
 						<tr>
 							<td>
-								<img src="http://gravatar.com/avatar/${matchUser.gravatarHash}?s=30&d=identicon" width="30" height="30"/>
-								${matchUser.name}
+								<a href="<g:createLink uri="/user/${matchUser.id}"/>">
+									<img src="http://gravatar.com/avatar/${matchUser?.gravatarHash}?s=30&d=identicon" width="30" height="30"/>
+									${matchUser?.name}
+								</a>
 							</th>
-							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match.overallScore}"/></td>
-							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match.principalPercentageScore}"/></td>
-							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match.matchPercentageScore}"/></td>
+							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match?.overallScore}"/></td>
+							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match?.principalPercentageScore}"/></td>
+							<td><g:formatNumber type="percent" minFractionDigits="2" number="${match?.matchPercentageScore}"/></td>
 							<td>
-								<g:if test="${match.questionsInCommon}">${match.questionsInCommon}</g:if>&nbsp;
+								<g:if test="${match.questionsInCommon}">${match?.questionsInCommon}</g:if>&nbsp;
 							</td>
 						</tr>
 					</g:each>
