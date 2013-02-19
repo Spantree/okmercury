@@ -1,7 +1,7 @@
 import co.okmercury.User
 import co.okmercury.UserService
 
-class userService {
+class BootStrap {
 	def grailsApplication
 
     def init = { servletContext ->
