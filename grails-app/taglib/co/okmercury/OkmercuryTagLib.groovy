@@ -21,7 +21,7 @@ class OkmercuryTagLib {
 			if(match) {
 				User matchUser = User.get(match.matchUserId)
 				out << "<div class=\"${cssClass}\">"
-					if(match.overallScore > 0.5) {
+					if(match.overallScore > 0.25) {
 						out << "<a href=\"/user/${matchUser.id}\">"
 						String formattedPercentage = df.format(match.overallScore)
 						out << "<img src=\"http://gravatar.com/avatar/${matchUser?.gravatarHash}?s=40&d=identicon\" width=\"40\" height=\"40\"/>"
