@@ -186,12 +186,12 @@ class ResetController {
 		log.info "Deleting all the things!"
 		DB db = mongo.getDB('okmercury')
 		DBObject allQuery = [:] as BasicDBObject
-		db.userMatch.remove([email: [$ne: 'admin@okmercury.co']], WriteConcern.SAFE)
+		db.userMatch.remove(allQuery, WriteConcern.SAFE)
 		db.questionMatch.remove(allQuery, WriteConcern.SAFE)
 		db.answer.remove(allQuery, WriteConcern.SAFE)
 		db.questionOption.remove(allQuery, WriteConcern.SAFE)
 		db.question.remove(allQuery, WriteConcern.SAFE)
-		db.user.remove(allQuery, WriteConcern.SAFE)
+		db.user.remove([email: [$ne: 'admin@okmercury.co']], WriteConcern.SAFE)
 	}
 	
 	def addUsers() {
