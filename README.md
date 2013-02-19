@@ -146,7 +146,7 @@ already exist. We also have some built-in accounts (with preset avatars): `cedri
 #### Bootstrap or reset your questions and answers
 
 We have a few canned questions to get you started.  To replace any existing questions, answers and matches with demo 
-entries, point your browser to `http://dev.mercury.com.local/reset`
+entries, point your browser to the hidden url `http://dev.mercury.com.local/reset`
 
 ![SystemUIServer-1](https://f.cloud.github.com/assets/530343/167964/4bdc4896-79eb-11e2-98bf-57e798485af2.png)
 
