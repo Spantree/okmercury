@@ -134,10 +134,10 @@ class MatchService {
 				DBObject update = [$set: [
 					principalPoints: results.principalPoints,
 					principalPointsPossible: results.principalPointsPossible,
-					principalPercentageScore: principalPercentageScore,
+					principalPercentageScore: Math.max(0, principalPercentageScore-marginOfError),
 					matchPoints: results.matchPoints,
 					matchPointsPossible: results.matchPointsPossible,
-					matchPercentageScore: matchPercentageScore,
+					matchPercentageScore: Math.max(0, matchPercentageScore-marginOfError),
 					questionsInCommon: results.questionsInCommon,
 					overallScore: overallScore,
 					marginOfError: marginOfError
