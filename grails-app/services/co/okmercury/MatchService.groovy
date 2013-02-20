@@ -82,8 +82,8 @@ class MatchService {
 			return (1F/commonQuestions.floatValue())
 	}
 	
-	Float scorePercentage(int points, int pointsPossible, Float marginOfError) {
-		return Math.max(0, points.floatValue()/pointsPossible.floatValue()-marginOfError)
+	Float scorePercentage(int points, int pointsPossible) {
+		return Math.max(0, points.floatValue()/pointsPossible.floatValue())
 	}
 
 	DBObject getQuestionMatchSums(User userA, User userB, User principalUser) {
@@ -125,8 +125,8 @@ class MatchService {
 
 			if(results) {
 				Float marginOfError = getMarginOfError(results.questionsInCommon)
-				Float principalPercentageScore = scorePercentage(results.principalPoints, results.principalPointsPossible, marginOfError)
-				Float matchPercentageScore = scorePercentage(results.matchPoints, results.matchPointsPossible, marginOfError)
+				Float principalPercentageScore = scorePercentage(results.principalPoints, results.principalPointsPossible)
+				Float matchPercentageScore = scorePercentage(results.matchPoints, results.matchPointsPossible)
 				Float overallScore = Math.max(0, Math.sqrt(principalPercentageScore * matchPercentageScore)-marginOfError)
 
 				DBObject criteria = [principalUserId: principalUser.id, matchUserId: matchUser.id] as BasicDBObject
