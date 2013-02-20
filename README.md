@@ -3,7 +3,7 @@
 A blatant plagiarism of the [OKCupid Matching Algorithm](http://www.okcupid.com/help/match-percentages) applied to 
 business matchmaking for meetings and conferences.  For more info, see the 
 [TED-Ed Talk](http://ed.ted.com/lessons/inside-okcupid-the-math-of-online-dating-christian-rudder) they released on Valentines
-Day 2013. This was the direct inspiration for our project.
+Day 2013. This talk is the direct inspiration for the project.
 
 This project was originally part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by [Meeting
 Professionals International](http://www.mpiweb.org/Home).
