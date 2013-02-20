@@ -50,9 +50,9 @@ class jetty {
         mode => 744
 	}
 
-    file { "/usr/share/jetty/contexts/introcloud.xml":
+    file { "/usr/share/jetty/contexts/okmercury.xml":
         ensure => file,
-        source => "puppet:///modules/jetty/introcloud.xml",
+        source => "puppet:///modules/jetty/okmercury.xml",
         group => jetty,
         owner => jetty,
         mode => 660,
