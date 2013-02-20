@@ -21,7 +21,7 @@
 		<div class="container">
 			<div class="row">
 				<a href="/" class="logo ${isLogin?'center':''}">
-					<r:img uri="images/logo.png" class="logo"/>
+					<r:img uri="/images/logo.png" class="logo"/>
 					<g:if test="${!isLogin}">
 						<g:if test="${session.user}">
 							<a href="/logout" class="btn logout fa-icon-signout">
@@ -45,7 +45,7 @@
 		  	</div>
 			<div class="modal-body">
 				<p>Sorry, this feature is not yet available.</p>
-				<r:img uri="images/okay-guy.png" class="okay-guy"/>
+				<r:img uri="/images/okay-guy.png" class="okay-guy"/>
 		  	</div>
 			<div class="modal-footer">
 				<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button>
