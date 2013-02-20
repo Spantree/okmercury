@@ -8,7 +8,7 @@ Day 2013. This was the direct inspiration for our project.
 This project was originally part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by [Meeting
 Professionals International](http://www.mpiweb.org/Home).
 
-Also be sure to check out the live demo at http://okmercury.co.
+Also be sure to check out the live demo at http://okmercury.co and the two-minute hackathon pitch at https://vimeo.com/60021232.
 
 ## Authors
 
