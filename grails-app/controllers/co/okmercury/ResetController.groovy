@@ -111,23 +111,14 @@ class ResetController {
 			]
 		],
 		[
-			question: "My average event needs...",
-			options: [
-				"Less than 5000 sq ft of floor space",
-				"5000 - 10,000 sq ft of floor space",
-				"10,001 - 50,000 sq ft of floor space",
-				"More than 50,000 sq ft of floor space",
-				"N/A"
-			]
-		],
-		[
 			question: "My average event uses...",
 			options: [
 				"Less than 5000 sq ft of floor space",
 				"5000 - 10,000 sq ft of floor space",
 				"10,001 - 50,000 sq ft of floor space",
 				"50,001 - 100,000 sq ft of floor space",
-				"More than 100,000 sq ft of floor space"
+				"More than 100,000 sq ft of floor space",
+				"N/A"
 			]
 		],
 		[
