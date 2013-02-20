@@ -186,8 +186,9 @@ Special Thanks to Colleen Crone and Matt Dabney for helping us come up with exam
 
 ## Disclaimer
 
-This project is in now way affiliated with OKCupid or its parent company, Humor Rainbow Inc. The likeness to the "OKCupid" 
-name and borrowed design elements from the OKCupid site are entirely tongue-in-cheek.
+This project is not affiliated with OKCupid or its parent company, Humor Rainbow Inc, or its grandparent company Match.com 
+in any way. The likeness to the "OKCupid" name and borrowed design elements from the OKCupid site are entirely 
+tongue-in-cheek.
 
 ## Copyright and license
 
