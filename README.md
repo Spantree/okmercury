@@ -6,7 +6,7 @@ business matchmaking for meetings and conferences.  For more info, see the
 Day 2013. This talk is the direct inspiration for the project.
 
 This project was originally part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by [Meeting
-Professionals International](http://www.mpiweb.org/Home).
+Professionals International](http://www.mpiweb.org/Home), taking home first prize on February 17 2013.
 
 Also be sure to check out the live demo at http://okmercury.co and the two-minute hackathon pitch at https://vimeo.com/60021232.
 
