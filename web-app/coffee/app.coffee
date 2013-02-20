@@ -42,6 +42,8 @@ $ ->
 			success: callback
 			error: showError
 
+		$.ajaxSetup contentType: "application/json; charset=utf-8"
+    
 		$.ajax "/question/#{id}", ajaxSettings
 		return false
 
@@ -78,7 +80,9 @@ $ ->
 				processData: false
 				success: -> goToNextQuestion(userId)
 				error: showError
-
+				
+			$.ajaxSetup contentType: "application/json; charset=utf-8"
+			
 			$.ajax "/user/#{userId}/question/#{questionId}", ajaxSettings
 
 	skipAnswer = ->
@@ -95,6 +99,8 @@ $ ->
 			success: -> goToNextQuestion(userId)
 			error: showError
 
+		$.ajaxSetup contentType: "application/json; charset=utf-8"
+		
 		$.ajax "/user/#{userId}/question/#{questionId}/skip", ajaxSettings
 
 	featureNotAvailable = ->
