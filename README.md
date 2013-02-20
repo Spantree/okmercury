@@ -1,14 +1,14 @@
 # OKMercury
 
 A blatant plagiarism of the [OKCupid Matching Algorithm](http://www.okcupid.com/help/match-percentages) applied to 
-business matchmaking at meetings and conferences.  For more info, see the 
+business matchmaking for meetings and conferences.  For more info, see the 
 [TED-Ed Talk](http://ed.ted.com/lessons/inside-okcupid-the-math-of-online-dating-christian-rudder) they released on Valentines
-Day 2013. That talk was very directly the inspiration for this project.
+Day 2013. This talk is the direct inspiration for the project.
 
 This project was originally part of a [48-hour hackathon](http://mpitechcon.com/hackathon/) sponsored by [Meeting
-Professionals International](http://www.mpiweb.org/Home).
+Professionals International](http://www.mpiweb.org/Home), taking home first prize on February 17 2013.
 
-Also be sure to check out the live demo at http://okmercury.co (login as any username with any password).
+Be sure to check out the live demo at http://okmercury.co and the two-minute hackathon pitch at https://vimeo.com/60021232.
 
 ## Authors
 
@@ -186,8 +186,9 @@ Special Thanks to Colleen Crone and Matt Dabney for helping us come up with exam
 
 ## Disclaimer
 
-This project is in now way affiliated with OKCupid or its parent company, Humor Rainbow Inc. The likeness to the "OKCupid" 
-name and borrowed design elements from the OKCupid site are entirely tongue-in-cheek.
+This project is not affiliated with OKCupid or its parent company, Humor Rainbow Inc, or its grandparent company Match.com 
+in any way. The likeness to the "OKCupid" name and borrowed design elements from the OKCupid site are entirely 
+tongue-in-cheek.
 
 ## Copyright and license
 
@@ -206,4 +207,6 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 Email info@spantree.net if you run into issues.  We'd be happy to help.
 
-OKCupid people, please feel free to send any and all cease and desist letters to cease.and.desist@spantree.net as well.
+OKCupid people, please feel free to send any and all cease and desist letters to cease.and.desist@spantree.net :-). We 
+are huge fans of the science you folks are doing and hopefully the name and likeness are taken in the lighthearted manner 
+they were intended.
