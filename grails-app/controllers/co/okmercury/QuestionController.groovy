@@ -50,11 +50,15 @@ class QuestionController {
 	}
 
 	def answer() {
-		Question question = Question.get(new ObjectId(params.questionId))
+		Question answerQuestion = Question.get(new ObjectId(params.questionId))
+		User answerUser = User.get(new ObjectId(params.userId))
+		Answer previousAnswer = Answer.find{ user == answerUser && question == answerQuestion }
+		
 		render(view: 'answer', model: [
 			user: session.user,
-			question: question,
-			options: question.options.sort { it.order },
+			question: answerQuestion,
+			previousAnswer: previousAnswer,
+			options: answerQuestion.options.sort { it.order },
 			importanceOptions: Importance.class.getEnumConstants()
 		])
 	}

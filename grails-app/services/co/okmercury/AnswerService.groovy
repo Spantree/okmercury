@@ -46,6 +46,7 @@ class AnswerService {
 		answer.importance = importanceService.getImportanceByName(importanceName)
 		answer.lastModifiedDate = new Date()
 		answer.userAnswerExplanation = userAnswerExplanation
+		answer.skipped = false;
 		answer.save(flush: true)
 		if(answer.errors.hasErrors()) {
 			log.error "Error saving answer for user ${user.id}: ${answer.errors.allErrors}"
