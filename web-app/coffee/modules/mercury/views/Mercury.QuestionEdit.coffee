@@ -3,12 +3,10 @@
 		el: "#question-edit"
 		events: 
 			'click a#save-question-and-add-another': 'saveAndAddAnother'
+			'click a#save-question-and-go-home': 'saveAndGoHome'
     
 		initialize: (model) ->
 			
-		saveAndAddAnother: ->
-			@saveQuestion true
-		
 		getQuestionId: ->
 			$('#question-id').val()
 			
@@ -27,7 +25,16 @@
 		
 		goToQuestionList: (data, status) ->
 			Mercury.Router.navigate "/question/list"
+		
+		hideError: ->
+			$('#error-message').hide()
 			
+		saveAndAddAnother: ->
+			@saveQuestion true
+			
+		saveAndGoHome: ->
+			@saveQuestion false
+		
 		saveQuestion: (addAnother) ->
 			id = @getQuestionId()
 	
@@ -55,8 +62,6 @@
 			
 			return false
 		
-		hideError: ->
-			$('#error-message').hide()
 			
 		showError: (messages) ->
 			
@@ -65,5 +70,6 @@
 				$('#error-message').show()
 		
 		
+			
 
 )(app, app.module('mercury'))
