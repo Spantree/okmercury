@@ -11,12 +11,11 @@
 				</div>
 			</div>
 		</g:if>
-		<div class="row-fluid"/>
-				<div id="error-message" class="span6 alert">
-					An error occurred
-				</div>
+		<div class="row-fluid" id="question-edit">
+			<div id="error-message" class="alert">
+				An error occurred
 			</div>
-		<div class="row-fluid">
+			
 			<form class="question-create">
 				<input type="hidden" id="question-id" name="id" value="${id}"/>
   				<fieldset>
@@ -45,8 +44,6 @@
 					</g:each>
   				</fieldset>
 			</form>
-		</div>
-		<div class="row-fluid">
 			<div>
 				<a id="save-question-and-add-another" class="btn btn-info">Add Another Question &gt;</a>
 				<a id="save-question-and-go-home" class="btn btn-success" href="/">Done Adding Questions</a>

@@ -26,9 +26,13 @@
 					<i class="fa-icon-trash"></i>Reset Application
 				</a>
 			</g:else>
-			<a id="add-question" class="span2 btn btn-success"><i class="fa-icon-plus"></i>Add Questions</a>
+			<a id="add-question" class="span2 btn btn-success" 
+				href="<g:createLink uri="/question"/>" 
+				>
+				<i class="fa-icon-plus"></i>Add Questions
+			</a>
 			<a id="review-questions" class="span2 btn btn-success"
-				href="<g:createLink uri="/question"/>">
+				href="<g:createLink uri="/question/list"/>">
 				<i class="fa-icon-tasks"></i>Review Questions
 			</a>
 			<g:if test="${session.user.email != 'admin@okmercury.co'}">

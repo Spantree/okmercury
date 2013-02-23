@@ -8,8 +8,10 @@ class UrlMappings {
 		}
 
 		"/question/"(controller: 'question') {
-			action = [GET: 'list', POST: 'create']
+			action = [GET: 'edit', PUT: 'save']
 		}
+		
+		"/question/list"(controller: 'question', action:'list')
 		
 		"/question/$id"(controller: 'question') {
 			action = [GET: 'edit', PUT: 'save']

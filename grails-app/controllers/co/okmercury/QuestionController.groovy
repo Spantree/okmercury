@@ -8,13 +8,8 @@ class QuestionController {
 	QuestionService questionService
 	AnswerService answerService
 	
-	def create() {
-		ObjectId id = new ObjectId()
-		redirect(uri: "/question/${id}", params: params)
-	}
-	
 	def edit() {
-		Question question = Question.findByAssignedId(params.id)
+		Question question = params.id? Question.findByAssignedId(params.id) : null
 		[
 			id: params.id,
 			questionText: question?.question ?: '',
@@ -25,7 +20,7 @@ class QuestionController {
 	
 	def save() {
 		def json = request.JSON
-		String id = params.id
+		String id = params.id ?: new ObjectId()
 		Question question = questionService.updateQuestion(id, json.questionText, json.possibleAnswers, session.user)
 		if(question.errors.hasErrors()) {
 			response.status = 500
