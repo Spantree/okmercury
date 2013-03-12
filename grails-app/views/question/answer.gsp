@@ -58,7 +58,7 @@
 				<div class="row-fluid">
 					<div>
 						<a id="skip-question" class="btn">Skip &gt;</a>
-						<a id="next-question" class="btn btn-success ${previousAnswer && !previousAnswer.skipped?'':'disabled'}">Save Answer &gt;</a>
+						<a id="next-question" class="btn btn-success">Save Answer &gt;</a>
 					</div>
 				</div>
 			</div>
