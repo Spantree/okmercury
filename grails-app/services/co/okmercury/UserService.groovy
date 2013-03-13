@@ -1,91 +1,70 @@
 package co.okmercury
 
-import grails.plugins.springsecurity.SpringSecurityService
-
-import org.bson.types.ObjectId
 import org.codehaus.groovy.grails.plugins.springsecurity.GrailsUser
-import org.codehaus.groovy.grails.plugins.springsecurity.GrailsUserDetailsService
-import org.springframework.dao.DataAccessException
-import org.springframework.security.core.authority.GrantedAuthorityImpl
+import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.authority.GrantedAuthorityImpl
 import org.springframework.security.core.userdetails.UsernameNotFoundException
-
-import co.okmercury.security.UserAlreadyExistsException
-
-import com.synergyj.grails.plugins.avatar.util.MD5Util
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.apache.log4j.Logger
+import org.codehaus.groovy.grails.plugins.springsecurity.GrailsUserDetailsService
+import co.okmercury.User
+import co.okmercury.UserRole
 
 class UserService implements GrailsUserDetailsService {
-	SpringSecurityService springSecurityService
-	
-	// @Cacheable('email')
-	User getUserByEmail(String email) {
-		User.findByEmail(email)
-	}
-	
-	// @Cacheable('email')
-	User getById(ObjectId id) {
-		User.get(id)
-	}
-	
-	User createUser(
-		String email, String password,
-		String firstName, String lastName,
-		String jobTitle, String companyName,
-		String gravatarHash = null,
-		List<String> roles = ['user']
-	) throws UserAlreadyExistsException {
-		if(User.findByEmail(email)) {
-			throw new UserAlreadyExistsException(email)
+
+	private Logger log = Logger.getLogger(getClass())
+
+	/**
+	 * Some Spring Security classes (e.g. RoleHierarchyVoter) expect at least one role, so
+	 * we give a user with no granted roles this one which gets past that restriction but
+	 * doesn't grant anything.
+	 */
+	static final List NO_ROLES = [
+		new GrantedAuthorityImpl(SpringSecurityUtils.NO_ROLE)
+	]
+
+	@Override
+	UserDetails loadUserByUsername(String username, boolean loadRoles) {
+		if(log.debugEnabled) {
+			log.debug("Attempted user logon: $username")
 		}
-		
-		if(!gravatarHash) {
-			gravatarHash = MD5Util.md5Hex(email)
+		User.withTransaction { status ->
+			def user = User.findByEmail(username)
+
+			if (!user) {
+				log.warn("User not found: $username")
+				throw new UsernameNotFoundException('User not found', username)
+			}
+
+			if(log.debugEnabled) {
+				log.debug("User found: $username")
+			}
+
+			def roles = NO_ROLES
+			if (loadRoles) {
+				def authorities = user.authorities?.collect {new GrantedAuthorityImpl(it)}
+				if(authorities) {
+					roles = authorities
+				}
+			}
+
+			if(log.debugEnabled) {
+				log.debug("User roles: $roles")
+			}
+
+			return createUserDetails(user, roles)
 		}
-		
-		String encodedPassword = springSecurityService.encodePassword(password, email)
-		
-		User user = new User(
-			email: email,
-			password: encodedPassword,
-			firstName: firstName,
-			lastName: lastName,
-			jobTitle: jobTitle,
-			companyName: companyName,
-			gravatarHash: gravatarHash,
-			roles: roles
-		)
-		user.save(flush: true)
-		
-		return user
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException, DataAccessException {
-		User user = User.findByEmail(email)
-		if(!user) {
-			throw new UsernameNotFoundException(email)
-		}
-		return createUserDetails(user)
+	UserDetails loadUserByUsername(String username) {
+		return loadUserByUsername(username, true)
 	}
 
-	@Override
-	public UserDetails loadUserByUsername(String username, boolean loadRoles) throws UsernameNotFoundException, DataAccessException {
-		User user = User.findByEmail(email)
-		if(!user) {
-			throw new UsernameNotFoundException(email)
-		}
-		return createUserDetails(user)
-	}
-	
-	public UserDetails createUserDetails(User user) {
-		return new GrailsUser(
-			user.email,
-			user.password,
-			true,
-			false,
-			false,
-			false,
-			user.roles?.collect { new GrantedAuthorityImpl(it) } ?: [new GrantedAuthorityImpl('user')]
-		)
+	protected UserDetails createUserDetails(user, Collection authorities) {
+		log.warn("Looking up user: ${user.password}")
+		new GrailsUser(user.email, user.password, true,
+				true, true, true, authorities, user.id)
 	}
 }

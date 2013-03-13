@@ -13,10 +13,10 @@
 			<!-- start: Row -->
 			<div class="row-fluid">
 				<div class="span2">
-					<img src="http://gravatar.com/avatar/${session.user.gravatarHash}?s=98&d=identicon"/>
+					<img src="http://gravatar.com/avatar/${user.gravatarHash}?s=98&d=identicon"/>
 				</div>
 				<div class="span10 alert alert-success">
-					<g:message code="user.created" args="${[session.user.email]}"/>
+					<g:message code="user.created" args="${[user.email]}"/>
 					<a href="/" class="span6 offset3 btn btn-primary" style="margin-top: 20px;">
 						<i class="fa-icon-home"></i>Go to Home Page
 					</a>

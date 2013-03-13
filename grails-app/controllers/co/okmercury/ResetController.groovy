@@ -9,9 +9,9 @@ import com.mongodb.DBObject
 import com.mongodb.WriteConcern
 
 class ResetController {
-	UserService userService
 	QuestionService questionService
 	MatchService matchService
+	UserService	userService
 	AnswerService answerService
 	def mongo
 
@@ -192,15 +192,18 @@ class ResetController {
 	
 	def addUsers() {
 		userMaps.collect { Map map ->
-			userService.createUser(
-				map.email,
-				'password',
-				map.firstName,
-				map.lastName,
-				map.jobTitle,
-				map.companyName,
-				map.gravatarHash
-			)
+			// Update user info
+			User user = new User()
+			user.username = map.email
+			user.password = 'password'
+			user.firstName = map.firstName
+			user.lastName = map.lastName
+			user.email = user.username
+			user.authorities = ["ROLE_USER"]
+			user.jobTitle = map.jobTitle
+			user.companyName = map.companyName
+			user.gravatarHash = map.gravatarHash
+			user.save(flush:true)
 		}
 	}
 	

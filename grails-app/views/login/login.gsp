@@ -34,14 +34,15 @@
 					<div class="page-title-small">
 						<h3 style="background:#f0f0f0">or</h3>
 					</div>
-					<form method="post" action="">
+					<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
 						<div class="row-fluid">
-							<input class="span12" id="user" name="user" type="text" value="${params.user}" placeholder="email"/>
-							<input class="span12" id="pass" name="pass" type="password" value="" placeholder="password"/>
+							<input class="span12" id="user" name='j_username' type="text" value="${params.user}" placeholder="email"/>
+							<input class="span12" id="pass" name='j_password' type="password" value="" placeholder="password"/>
 						</div>
 						<div class="row-fluid">
 							<div class="remember">
-								<input id="remember" name="remember" type="checkbox" value="1"/> Remember me!
+								<input id="remember" name='${rememberMeParameter}' type="checkbox" value="1"/>
+								<label for='remember'><g:message code="springSecurity.login.remember.me.label"/></label>
 							</div>
 							<div class="register">
 								<a href="/user/register">Register</a>

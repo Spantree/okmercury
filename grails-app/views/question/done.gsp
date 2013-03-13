@@ -21,7 +21,7 @@
 				</a>
 				<a id="add-question" class="btn btn-success"><i class="fa-icon-plus"></i>Add More Questions</a>
 				<a id="view-matches" class="btn btn-success"
-					href="<g:createLink uri="/user/${session.user.id}/matches"/>"
+					href="<g:createLink uri="/user/${user.id}/matches"/>"
 				>
 					<i class="fa-icon-asterisk"></i>View Your Matches
 				</a>

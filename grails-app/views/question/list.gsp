@@ -33,13 +33,13 @@
 							</td>
 							<td>
 								<a id="change-answer-${q.id}" class="btn btn-small btn-primary"
-									href="<g:createLink uri="/user/${session.user.id}/question/${q.id}"/>"
+									href="<g:createLink uri="/user/${user.id}/question/${q.id}"/>"
 								>
 									<i class="fa-icon-undo"></i>Change Answer
 								</a>
 							</td>
 							<td>
-								<a id="edit-question-${q.id}" class="btn btn-small btn-info ${q?.createdBy == session.user?'disabled':''}"
+								<a id="edit-question-${q.id}" class="btn btn-small btn-info ${q?.createdBy == user?'disabled':''}"
 									href="<g:createLink uri="/question/${q.assignedId}"/>"
 								>
 									<i class="fa-icon-edit"></i>Edit Question

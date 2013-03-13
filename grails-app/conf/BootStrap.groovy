@@ -1,23 +1,21 @@
+import co.okmercury.Role
 import co.okmercury.User
-import co.okmercury.UserService
 
 class BootStrap {
 	def grailsApplication
 
     def init = { servletContext ->
-		User user = User.findByEmail('admin@okmercury.co')
-		if(!user) {
+		
 			log.info "Creating admin user"
-			UserService userService = grailsApplication.mainContext.getBean('userService')
-			userService.createUser(
-				'admin@okmercury.co',
-				'password',
-				'Administrator',
-				'of OKMercury',
-				'Administrator',
-				'OKMercury'
-			)
-		}
+			def userRole = new Role(authority:"ROLE_USER").save(flush:true)
+			String email = "admin@okmercury.co"
+			def user = User.findByEmail(email) ?: new User()
+			user.username = email
+			user.password = "password"
+			user.email = user.username
+			user.authorities = ["ROLE_USER"]
+			user.save(flush:true)
+			println user.errors.allErrors
     }
     def destroy = {
     }

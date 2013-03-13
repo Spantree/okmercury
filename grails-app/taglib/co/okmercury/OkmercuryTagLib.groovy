@@ -8,11 +8,11 @@ class OkmercuryTagLib {
 	static namespace = 'okm'
 	
 	MatchService matchService
-	UserService userService
 	DecimalFormat df = new DecimalFormat("###,##%");
+	def springSecurityService
 	
 	def bestMatch = { attrs, body ->
-		User user = session.user
+		User user = springSecurityService.getCurrentUser()
 		String prefix = attrs.prefix ?: 'You should meet'
 		String cssClass = attrs.cssClass ?: ''
 		if(user) {

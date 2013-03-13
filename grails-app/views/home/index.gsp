@@ -12,9 +12,9 @@
 			</div>
 		</div>
 		<div class="row main-links">
-			<g:if test="${session.user.email != 'admin@okmercury.co'}">
+			<g:if test="${user.email != 'admin@okmercury.co'}">
 				<a id="answer-questions" class="span2 btn btn-success"
-					href="<g:createLink uri="/user/${session.user.id}/question/unanswered"/>"
+					href="<g:createLink uri="/user/${user.id}/question/unanswered"/>"
 				>
 					<i class="fa-icon-ok"></i>Answer Questions
 				</a>
@@ -35,9 +35,9 @@
 				href="<g:createLink uri="/question/list"/>">
 				<i class="fa-icon-tasks"></i>Review Questions
 			</a>
-			<g:if test="${session.user.email != 'admin@okmercury.co'}">
+			<g:if test="${user.email != 'admin@okmercury.co'}">
 				<a id="view-matches" class="span2 btn btn-success"
-					href="<g:createLink uri="/user/${session.user.id}/matches"/>"
+					href="<g:createLink uri="/user/${user.id}/matches"/>"
 				>
 					<i class="fa-icon-asterisk"></i>View Matches
 				</a>

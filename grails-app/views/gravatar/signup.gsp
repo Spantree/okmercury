@@ -13,14 +13,14 @@
 			<g:if test="${success}">
 				<div class="row-fluid">
 					<div class="span12 alert alert-success gravatar-create-message">
-						<g:message code="gravatar.signup.success" args="${[session.user.email]}"/>
+						<g:message code="gravatar.signup.success" args="${[user.email]}"/>
 					</div>
 				</div>
 			</g:if>
 			<g:else>
 				<div class="row-fluid">
 					<div class="span12 alert alert-error gravatar-create-message">
-						<g:message code="gravatar.signup.error" args="${[session.user.email]}"/>
+						<g:message code="gravatar.signup.error" args="${[user.email]}"/>
 					</div>
 				</div>
 			</g:else>

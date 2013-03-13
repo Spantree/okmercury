@@ -101,3 +101,13 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'co.okmercury.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'co.okmercury.UserRole'
+grails.plugins.springsecurity.authority.className = 'co.okmercury.Role'
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'co.okmercury.User'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'co.okmercury.UserRole'
+grails.plugins.springsecurity.authority.className = 'co.okmercury.Role'

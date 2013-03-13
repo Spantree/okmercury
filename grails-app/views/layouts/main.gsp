@@ -23,9 +23,9 @@
 				<a href="/" class="logo ${isLogin?'center':''}">
 					<r:img uri="/images/logo.png" class="logo"/>
 					<g:if test="${!isLogin}">
-						<g:if test="${session.user}">
+						<g:if test="${user}">
 							<a href="/logout" class="btn logout fa-icon-signout">
-								Logout ${session.user.name}
+								Logout ${user.name}
 							</a>
 						</g:if>
 					</g:if>

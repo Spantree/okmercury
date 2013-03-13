@@ -12,7 +12,6 @@ import com.mongodb.DBObject
 import com.mongodb.WriteConcern
 
 class MatchService {
-	UserService userService
 	def mongo
 	
 	ReentrantLock questionHyperLock = new ReentrantLock()

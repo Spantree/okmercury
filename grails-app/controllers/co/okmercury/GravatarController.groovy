@@ -1,14 +1,19 @@
 package co.okmercury
 
+import grails.plugins.springsecurity.Secured
+
 class GravatarController {
 	GravatarService gravatarService
+	def springSecurityService
 
 	def prompt() {
-		[:]
+		[user : springSecurityService.getCurrentUser()]
 	}
 
+	@Secured(['ROLE_USER'])
 	def signup() {
-		boolean success = gravatarService.signup(session.user.email)
-		[success: success]
+		User user = springSecurityService.getCurrentUser()
+		boolean success = gravatarService.signup(user.email)
+		[success: success, user: user]
 	}
 }
