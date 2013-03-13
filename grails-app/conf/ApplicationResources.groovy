@@ -8,9 +8,9 @@ modules = {
 		resource url: 'js/underscore.js'
 		resource url: 'js/backbone.js'
 		
-		resource url: 'coffee/modules/mercury/views/Mercury.QuestionEdit.coffee'
+		//resource url: 'coffee/modules/mercury/views/Mercury.QuestionEdit.coffee'
 		
-		resource url: 'coffee/modules/mercury/routers/Mercury.Router.coffee'
+		//resource url: 'coffee/modules/mercury/routers/Mercury.Router.coffee'
 		
     }
 }

@@ -31,6 +31,10 @@ grails.project.dependency.resolution = {
 
         mavenLocal()
         mavenCentral()
+		
+		mavenRepo "http://maven.springframework.org/release"
+		mavenRepo "http://maven.springframework.org/snapshot"
+		mavenRepo "http://maven.springframework.org/milestone"
 
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
         //mavenRepo "http://snapshots.repository.codehaus.org"
@@ -45,6 +49,16 @@ grails.project.dependency.resolution = {
         runtime 'org.codehaus.gpars:gpars:1.0.0'
 		runtime 'org.codehaus.groovy.modules.http-builder:http-builder:0.6'
 		test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+		
+		// Spring Social Dependencies
+		def springSocialVersion = "1.0.2.RELEASE"
+		
+		compile("org.springframework.social:spring-social-core:${springSocialVersion}") { transitive = false }
+		compile("org.springframework.social:spring-social-web:${springSocialVersion}") { transitive = false }
+		compile("org.springframework.social:spring-social-facebook:${springSocialVersion}") { transitive = false }
+		compile("org.springframework.social:spring-social-twitter:${springSocialVersion}") { transitive = false }
+		compile("org.springframework.security:spring-security-crypto:3.1.0.RELEASE") { transitive = false }
+		compile("javax.inject:javax.inject:1")
     }
 
     plugins {
