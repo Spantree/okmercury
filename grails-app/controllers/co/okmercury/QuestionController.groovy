@@ -50,10 +50,7 @@ class QuestionController {
 	}
 
 	def answer() {
-		Question answerQuestion = Question.get(new ObjectId(params.questionId))
-		User answerUser = User.get(new ObjectId(params.userId))
-		Answer previousAnswer = Answer.find{ user == answerUser && question == answerQuestion }
-		
+		Question question = Question.get(new ObjectId(params.questionId))
 		render(view: 'answer', model: [
 			user: springSecurityService.getCurrentUser(),
 			question: answerQuestion,
