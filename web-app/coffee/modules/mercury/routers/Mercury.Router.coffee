@@ -6,7 +6,8 @@
 
 		initialize: ->
 			@views =
-				questionEdit: new Mercury.QuestionEdit
+				questionEdit: new Mercury.QuestionEditView
+				questionAnswer: new Mercury.QuestionAnswerView
 				
 		@navigate: (url) ->
 			window.location.assign(url);
