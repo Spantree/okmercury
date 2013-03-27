@@ -4,10 +4,11 @@
 		events: 
 			'click a#next-question': 'saveAnswer'
 			'click a#skip-question': 'skipQuestion'
-			
-    
+			'click .acceptableAnswer': 'updateForm'
+
 		initialize: (model) ->
 			@errors = []
+			@updateForm()
 			
 		clearErrors: ->
 			@errors = []
@@ -95,6 +96,15 @@
 			$.ajaxSetup contentType: "application/json; charset=utf-8"
 			$.ajax "/user/#{userId}/question/#{questionId}/skip", ajaxSettings
 		
+		updateForm: ->
+			
+			if( $('.acceptableAnswer').filter(':checked').length == $('.acceptableAnswer').length )
+				$($('.importance')[0]).prop('checked',true)
+				$('.importance').prop('disabled',true)
+			else
+				$('.importance').prop('disabled',false)
+				
+			
 		validate: ->
 			@errors = []
 			if !@getAnswer() || @getAnswer().length == 0
