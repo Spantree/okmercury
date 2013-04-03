@@ -5,7 +5,7 @@
 		<title>okmercury</title>
 	</head>
 	<body>
-		<div class="row-fluid">
+		<div class="row-fluid" id="question-answer">
 			<div class="span2 submitted-by">
 				<h5>Question submitted on <g:formatDate format="MMM d yyyy" date="${question.createdDate}"/> by</h5>
 				<h4><a href="/user/${question.createdBy.id}"/>${question.createdBy.name}</a></h4>
@@ -13,6 +13,9 @@
 			</div>
 			<div class="span10">
 				<div class="row-fluid">
+					<div id="error-message" class="alert">
+						An error occurred
+					</div>
 					<div class="answer">
 						<fieldset>
 							<input type="hidden" id="user-id" name="userId" value="${user.id}"/>

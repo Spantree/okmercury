@@ -46,8 +46,16 @@ class UrlMappings {
 		"/user/${userId}/created"(controller: 'login', action: 'created')
 		"/user/${userId}/gravatar/prompt"(controller: 'gravatar', action: 'prompt')
 		"/user/${userId}/gravatar/signup"(controller: 'gravatar', action: 'signup')
+		
+		"/signin/facebook"(controller: 'oauthsignin', action: 'signin')
 
 		"/"(controller: 'home', action: 'index')
 		"500"(view:'/error')
+		
+		// Override fo OAuth Callback
+		name springSocialRegister: "/register/$providerId" {
+			controller = 'login'
+			action = [GET: "oauthCallback", POST: 'register']
+		}
 	}
 }

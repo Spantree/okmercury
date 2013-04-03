@@ -1,5 +1,5 @@
 ((app, Mercury) ->
-	class Mercury.QuestionEdit extends Backbone.View
+	class Mercury.QuestionEditView extends Backbone.View
 		el: "#question-edit"
 		events: 
 			'click a#save-question-and-add-another': 'saveAndAddAnother'

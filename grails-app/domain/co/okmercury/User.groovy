@@ -11,6 +11,8 @@ class User {
 	Set authorities
 	boolean _dirtyPassword = false
 	
+	String oauthProvider;
+	
 	String firstName
 	String lastName
 	

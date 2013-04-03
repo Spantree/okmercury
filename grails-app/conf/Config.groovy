@@ -70,10 +70,19 @@ grails.gorm.default.constraints = {
 environments {
     development {
         grails.logging.jul.usebridge = true
+		grails.serverURL = "http://localhost:8080"
+		
+		// Facebook Settings
+		grails.plugins.springsocial.facebook.clientId = "101918953236251"
+		grails.plugins.springsocial.facebook.clientSecret = "73b06ad466e900d07f5555062068b572"
+		grails.plugins.springsocial.facebook.page.handleSignIn = "/register/facebook"
+		
+		grails.plugins.springsocial.twitter.consumerKey='KUyArdNpX8nPWnJgLIDfCA'
+		grails.plugins.springsocial.twitter.consumerSecret='k7x5OxZGAgnJd8WSi4T5VvlpuT4B6opUNXDAWU'
     }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "http://okmercury.co"
     }
 }
 
@@ -111,3 +120,5 @@ grails.plugins.springsecurity.authority.className = 'co.okmercury.Role'
 grails.plugins.springsecurity.userLookup.userDomainClassName = 'co.okmercury.User'
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'co.okmercury.UserRole'
 grails.plugins.springsecurity.authority.className = 'co.okmercury.Role'
+
+// Spring Social Items

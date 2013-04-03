@@ -19,10 +19,12 @@
 			</g:if>
 			<div class="row-fluid">
 				<div id="login-form">
-					<a href="" class="facebook_connect">
-						<div class="img"><i class="fa-icon-facebook"></i></div>
-						<div class="text">Login with Facebook</div>
-					</a>
+					<form action="/sssignin/facebook" method="POST">
+						<button type="submit">
+							<div class="img"><i class="fa-icon-facebook"></i></div>
+							<div class="text">Login with Facebook</div>
+						</button>
+					</form>
 					<a href="" class="twitter_connect">
 						<div class="img"><i class="fa-icon-twitter"></i></div>
 						<div class="text">Login with Twitter</div>

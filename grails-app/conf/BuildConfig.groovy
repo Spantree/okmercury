@@ -82,5 +82,9 @@ grails.project.dependency.resolution = {
 		compile(":spring-security-core:1.2.7.3") { excludes "hibernate" }
         runtime(":cache:1.0.1"){ excludes "hibernate" }
 		runtime(":spock:0.7") { excludes "spock-grails-support", "hibernate" }
+		compile(":spring-security-core:1.2.4")
+		compile(":spring-social-core:0.1.31")
+		compile(":spring-social-twitter:0.1.31")
+		compile(":spring-social-facebook:0.1.32")
     }
 }
