@@ -1,5 +1,6 @@
 package co.okmercury
 
+import grails.plugins.springsecurity.Secured
 import org.apache.commons.lang.math.RandomUtils
 import org.bson.types.ObjectId
 
@@ -261,6 +262,7 @@ class ResetController {
 		}
 	}
 	
+	@Secured(['ROLE_ADMIN'])
 	def reset() {
 		deleteStuff()
 		addUsers()

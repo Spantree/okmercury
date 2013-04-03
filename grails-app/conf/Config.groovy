@@ -79,6 +79,7 @@ environments {
 		
 		grails.plugins.springsocial.twitter.consumerKey='KUyArdNpX8nPWnJgLIDfCA'
 		grails.plugins.springsocial.twitter.consumerSecret='k7x5OxZGAgnJd8WSi4T5VvlpuT4B6opUNXDAWU'
+		grails.plugins.springsocial.twitter.page.handleSignIn = "/register/twitter"
     }
     production {
         grails.logging.jul.usebridge = false

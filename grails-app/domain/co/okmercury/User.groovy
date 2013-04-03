@@ -11,8 +11,6 @@ class User {
 	Set authorities
 	boolean _dirtyPassword = false
 	
-	String oauthProvider;
-	
 	String firstName
 	String lastName
 	
@@ -21,11 +19,16 @@ class User {
 	String jobTitle
 	String companyName
 
+	UserSocialConnections socialConnections = new UserSocialConnections()
+	
+	static embedded = ['socialConnections']
+	
 	static transients = ["springSecurityService", "_dirtyPassword", "name"]
+	
 	static constraints = {
 		username blank: false, unique: true,size: 2..32
 		email blank: false, unique:true,email:true
-		password blank: false,size:6..64
+		password blank: false, size:6..64
 	}
 
 	static mapping = { password column: '`password`' }

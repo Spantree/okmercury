@@ -1,19 +1,19 @@
 package co.okmercury
 
+import java.util.List;
+import java.util.Set;
+
 import org.codehaus.groovy.grails.plugins.springsecurity.GrailsUser
-import org.springframework.security.core.GrantedAuthority
-import org.springframework.security.core.userdetails.UserDetails
-import org.springframework.security.core.authority.GrantedAuthorityImpl
-import org.springframework.security.core.userdetails.UsernameNotFoundException
-import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
-import org.apache.log4j.Logger
 import org.codehaus.groovy.grails.plugins.springsecurity.GrailsUserDetailsService
-import co.okmercury.User
-import co.okmercury.UserRole
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils
+import org.springframework.security.core.authority.GrantedAuthorityImpl
+import org.springframework.security.core.userdetails.UserDetails
+import org.springframework.security.core.userdetails.UsernameNotFoundException
+import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.connect.UsersConnectionRepository
 
 class UserService implements GrailsUserDetailsService {
-
-	private Logger log = Logger.getLogger(getClass())
 
 	/**
 	 * Some Spring Security classes (e.g. RoleHierarchyVoter) expect at least one role, so
