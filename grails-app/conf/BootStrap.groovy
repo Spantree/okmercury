@@ -13,6 +13,7 @@ class BootStrap {
 			user.username = email
 			user.password = "password"
 			user.email = user.username
+			user.hasPassword = true
 			user.authorities = ["ROLE_USER", "ROLE_ADMIN"]
 			user.save(flush:true)
 			println user.errors.allErrors

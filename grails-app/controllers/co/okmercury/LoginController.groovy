@@ -2,10 +2,13 @@ package co.okmercury
 
 import grails.plugins.springsecurity.Secured
 import grails.plugins.springsocial.connect.web.GrailsConnectSupport
+import org.springframework.social.connect.ConnectionData
 import org.springframework.social.connect.UserProfile
 import org.springframework.social.connect.web.ProviderSignInAttempt
 import co.okmercury.security.UserAlreadyExistsException
 import grails.converters.JSON
+
+import org.apache.commons.lang.RandomStringUtils;
 
 
 import javax.servlet.http.HttpServletResponse
@@ -62,7 +65,15 @@ class LoginController {
 	 * Show the login page.
 	 */
 	def auth = {
+		
+		String messageKey = null
+		
+		if(params.login_error) {
+			if(params.login_error == '1') messageKey = 'login.denied'
+		}
 
+		
+		
 		def config = SpringSecurityUtils.securityConfig
 
 		if (springSecurityService.isLoggedIn()) {
@@ -70,10 +81,26 @@ class LoginController {
 			return
 		}
 
+		if(params.j_username) {
+			if(User.findByEmail(params.j_username)?.hasPassword) {
+				redirect(uri: "${request.contextPath}${config.apf.filterProcessesUrl}", params: params)
+			} else {
+				if(User.findByEmail(params.j_username).facebookId) {
+					messageKey = 'login.social.facebook'
+				} else if(User.findByEmail(params.j_username).twitterId) {
+					messageKey = 'login.social.twitter'
+				} else {
+					messageKey = 'login.social'
+				}
+			} 
+		}
+		
 		String view = 'login'
-		String postUrl = "${request.contextPath}${config.apf.filterProcessesUrl}"
+		String postUrl = ""
 		render view: view, model: [postUrl: postUrl,
-		                           rememberMeParameter: config.rememberMe.parameter]
+		                           rememberMeParameter: config.rememberMe.parameter,
+								   messageKey: messageKey,
+								   created: false]
 	}
 
 	/**
@@ -184,11 +211,16 @@ class LoginController {
 					user.authorities = ["ROLE_USER"]
 					user.jobTitle = params.jobTitle
 					user.companyName = params.companyName
+					user.hasPassword = true
 					created = user.save(flush:true)
 					if(created) {
 						springSecurityService.reauthenticate(user.username)
 						redirect(uri: "/user/${springSecurityService.getCurrentUser().id}/created")
-					} else messageKey = 'user.db.error'
+					} else {
+						log.warn "DB Error: " + user.errors.allErrors
+						messageKey = 'user.db.error'
+						if(user.password.length() < 6) messageKey = 'user.password.invalid'
+					}
 				} catch(UserAlreadyExistsException e) {
 					messageKey = 'user.already.exists'
 				}
@@ -208,13 +240,92 @@ class LoginController {
 	}
 	
 	/**
-	 * Register a new OAuth User
+	 * Redirect OAuth User to Registration
 	 * @return
 	 */
 	def oauthCallback() {
 		ProviderSignInAttempt attempt = session[ProviderSignInAttempt.SESSION_ATTRIBUTE]
 		UserProfile profile = attempt.connection.fetchUserProfile()
-		render "firstName: ${profile.firstName}, lastName: ${profile.lastName}"
+		ConnectionData data = attempt.connection.createData()
+		
+		String messageKey = null
+		boolean created = false
+		
+		if(params.user) {
+			if(!(params.firstName && params.user)) {
+				messageKey = 'user.name.and.pass.required'
+			} else {
+				try {
+					log.info "Creating new ${params.provider} user account for ${params.user}"
+					User user = new User();
+					
+					// Check if user is in database
+					if(User.findByEmail(params.user)) {
+						throw new UserAlreadyExistsException(params.user)
+					}
+					
+					// Update user info
+					user.username = params.user
+					user.password = RandomStringUtils.random(32, true, true)
+					user.firstName = params.firstName
+					user.lastName = params.lastName
+					user.email = user.username
+					user.authorities = ["ROLE_USER"]
+					user.jobTitle = params.jobTitle
+					user.companyName = params.companyName
+					user.hasPassword = false
+					
+					if(params.provider == "facebook") {
+						user.facebookId = params.username
+					} else if(params.provider == "twitter") {
+						user.twitterId = params.username
+					} else {
+						redirect(uri: "/user/register")
+					}
+					
+					created = user.save(flush:true)
+					if(created) {
+						springSecurityService.reauthenticate(user.username)
+						redirect(uri: "/user/${springSecurityService.getCurrentUser().id}/created")
+					} else {
+						log.warn "DB Error: " + user.errors.allErrors
+						messageKey = 'user.db.error'
+						if(user.password.length() < 6) messageKey = 'user.password.invalid'
+					}
+				} catch(UserAlreadyExistsException e) {
+					messageKey = 'user.already.exists'
+				}
+			}
+		} else {
+			if(data.getProviderId() == "facebook") {
+				User user = User.findByEmail(profile.email)
+				if(user) {
+					springSecurityService.reauthenticate(user.username)
+					if(user.facebookId) {
+						redirect(uri: "/")
+					} else {
+						user.facebookId = profile.username
+						user.save(flush: true)
+						redirect(uri: "/home/facebook")
+					}
+				} else {
+					user = User.findByFacebookId(profile.username)
+					if(user) {
+						springSecurityService.reauthenticate(user.username)
+						redirect(uri: "/")
+					} else {
+						return [provider: data.getProviderId(), profile: profile]
+					}
+				}
+			} else if(data.getProviderId() == "twitter") {
+				render "firstName: ${profile.firstName}, lastName: ${profile.lastName}, \
+					email: ${profile.email}, username: ${profile.username}, \
+					provider: ${data.getProviderId()}"
+			} else {
+				redirect(uri: "/user/register")
+			}
+		}
+		[messageKey: messageKey, created: created]
 	}
 
 }

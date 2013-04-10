@@ -72,13 +72,14 @@ environments {
         grails.logging.jul.usebridge = true
 		grails.serverURL = "http://localhost:8080"
 		
-		// Facebook Settings
+		// Facebook Settings (Grails Showcase)
 		grails.plugins.springsocial.facebook.clientId = "101918953236251"
 		grails.plugins.springsocial.facebook.clientSecret = "73b06ad466e900d07f5555062068b572"
 		grails.plugins.springsocial.facebook.page.handleSignIn = "/register/facebook"
 		
-		grails.plugins.springsocial.twitter.consumerKey='KUyArdNpX8nPWnJgLIDfCA'
-		grails.plugins.springsocial.twitter.consumerSecret='k7x5OxZGAgnJd8WSi4T5VvlpuT4B6opUNXDAWU'
+		// Twitter Settings (Grails Showcase)
+		grails.plugins.springsocial.twitter.consumerKey = "mcBxpCFGwS9gW5NbF4AZZg"
+		grails.plugins.springsocial.twitter.consumerSecret = "q91y7MQwcQVbugnrMXlc83YupMjZzuEvM5o0XIiSupI"
 		grails.plugins.springsocial.twitter.page.handleSignIn = "/register/twitter"
     }
     production {

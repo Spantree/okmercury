@@ -50,12 +50,13 @@ class UrlMappings {
 		"/signin/facebook"(controller: 'oauthsignin', action: 'signin')
 
 		"/"(controller: 'home', action: 'index')
+		"/home/${provider}"(controller: 'home', action: 'index')
 		"500"(view:'/error')
 		
 		// Override fo OAuth Callback
 		name springSocialRegister: "/register/$providerId" {
 			controller = 'login'
-			action = [GET: "oauthCallback", POST: 'register']
+			action = "oauthCallback"
 		}
 	}
 }

@@ -10,6 +10,7 @@ class User {
 	String email
 	Set authorities
 	boolean _dirtyPassword = false
+	boolean hasPassword
 	
 	String firstName
 	String lastName
@@ -18,10 +19,11 @@ class User {
 	String gravatarHash
 	String jobTitle
 	String companyName
-
-	UserSocialConnections socialConnections = new UserSocialConnections()
 	
-	static embedded = ['socialConnections']
+	// Social Connections
+	String twitterId
+	String linkedInId
+	String facebookId
 	
 	static transients = ["springSecurityService", "_dirtyPassword", "name"]
 	

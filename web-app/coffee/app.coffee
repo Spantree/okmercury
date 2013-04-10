@@ -134,6 +134,5 @@ $ ->
 
 	$('#remember').click featureNotAvailable
 	$('.forgot a').click featureNotAvailable
-	$('.facebook_connect').click featureNotAvailable
-	$('.twitter_connect').click featureNotAvailable
+#	$('.twitter_connect').click featureNotAvailable
 	$('.linkedin_connect').click featureNotAvailable

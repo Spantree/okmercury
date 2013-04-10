@@ -8,6 +8,11 @@ class HomeController {
 	
 	@Secured(['ROLE_USER'])
 	def index() {
-		[user : springSecurityService.getCurrentUser()]
+		if(!params.provider) {
+			[user : springSecurityService.getCurrentUser()]
+		} else {
+			
+			[user : springSecurityService.getCurrentUser(), oauth: params.provider]
+		}
 	}
 }
