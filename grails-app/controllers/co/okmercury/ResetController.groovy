@@ -196,7 +196,7 @@ class ResetController {
 			// Update user info
 			User user = new User()
 			user.username = map.email
-			user.password = 'password'
+			user.plainTextPassword = 'password'
 			user.firstName = map.firstName
 			user.lastName = map.lastName
 			user.email = user.username

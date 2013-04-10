@@ -9,8 +9,9 @@ class User {
 	String password
 	String email
 	Set authorities
-	boolean _dirtyPassword = false
 	boolean hasPassword
+	
+	String plainTextPassword
 	
 	String firstName
 	String lastName
@@ -25,7 +26,7 @@ class User {
 	String linkedInId
 	String facebookId
 	
-	static transients = ["springSecurityService", "_dirtyPassword", "name"]
+	static transients = ["springSecurityService", "plainTextPassword", "name"]
 	
 	static constraints = {
 		username blank: false, unique: true,size: 2..32
@@ -34,24 +35,19 @@ class User {
 	}
 
 	static mapping = { password column: '`password`' }
-
-	void setPassword(String password) {
-		this.@password = password
-		this._dirtyPassword = true
-	}
 	
 	def beforeInsert() {
 		encodePassword()
 	}
 
 	def beforeUpdate() {
-		if (_dirtyPassword) {
+		if (plainTextPassword) {
 			encodePassword()
 		}
 	}
 
 	protected void encodePassword() {
-		password = springSecurityService.encodePassword(password)
+		password = springSecurityService.encodePassword(plainTextPassword)
 	}
 	
 	String getName() {

@@ -11,7 +11,7 @@ class BootStrap {
 			String email = "admin@okmercury.co"
 			def user = User.findByEmail(email) ?: new User()
 			user.username = email
-			user.password = "password"
+			user.plainTextPassword = "password"
 			user.email = user.username
 			user.hasPassword = true
 			user.authorities = ["ROLE_USER", "ROLE_ADMIN"]

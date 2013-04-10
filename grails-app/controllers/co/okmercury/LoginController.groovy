@@ -80,23 +80,9 @@ class LoginController {
 			redirect uri: config.successHandler.defaultTargetUrl
 			return
 		}
-
-		if(params.j_username) {
-			if(User.findByEmail(params.j_username)?.hasPassword) {
-				redirect(uri: "${request.contextPath}${config.apf.filterProcessesUrl}", params: params)
-			} else {
-				if(User.findByEmail(params.j_username).facebookId) {
-					messageKey = 'login.social.facebook'
-				} else if(User.findByEmail(params.j_username).twitterId) {
-					messageKey = 'login.social.twitter'
-				} else {
-					messageKey = 'login.social'
-				}
-			} 
-		}
 		
 		String view = 'login'
-		String postUrl = ""
+		String postUrl = "${request.contextPath}${config.apf.filterProcessesUrl}"
 		render view: view, model: [postUrl: postUrl,
 		                           rememberMeParameter: config.rememberMe.parameter,
 								   messageKey: messageKey,
@@ -204,7 +190,7 @@ class LoginController {
 					
 					// Update user info
 					user.username = params.user
-					user.password = params.pass
+					user.plainTextPassword = params.pass
 					user.firstName = params.firstName
 					user.lastName = params.lastName
 					user.email = user.username
@@ -251,9 +237,9 @@ class LoginController {
 		String messageKey = null
 		boolean created = false
 		
-		if(params.user) {
+		if(params.user && !params.pass) {
 			if(!(params.firstName && params.user)) {
-				messageKey = 'user.name.and.pass.required'
+				messageKey = 'user.name.required'
 			} else {
 				try {
 					log.info "Creating new ${params.provider} user account for ${params.user}"
@@ -261,12 +247,24 @@ class LoginController {
 					
 					// Check if user is in database
 					if(User.findByEmail(params.user)) {
-						throw new UserAlreadyExistsException(params.user)
+						user = User.findByEmail(params.user)
+						if(!user.hasPassword) throw new UserAlreadyExistsException(params.user)
+						else if(params.provider == "facebook") {
+							if(user.facebookId) throw new UserAlreadyExistsException(params.user)
+							else {
+								return [confirmation: true, provider: params.provider, user: params.user, username: params.username]
+							}
+						} else if(params.provider == "twitter") {
+							if(user.twitterId) throw new UserAlreadyExistsException(params.user)
+							else {
+								return [confirmation: true, provider: params.provider, user: params.user, username: params.username]
+							} 
+						} else throw new UserAlreadyExistsException(params.user)
 					}
 					
 					// Update user info
 					user.username = params.user
-					user.password = RandomStringUtils.random(32, true, true)
+					user.plainTextPassword = RandomStringUtils.random(32, true, true)
 					user.firstName = params.firstName
 					user.lastName = params.lastName
 					user.email = user.username
@@ -290,11 +288,40 @@ class LoginController {
 					} else {
 						log.warn "DB Error: " + user.errors.allErrors
 						messageKey = 'user.db.error'
-						if(user.password.length() < 6) messageKey = 'user.password.invalid'
+						if(user.plainTextPassword.length() < 6) messageKey = 'user.password.invalid'
 					}
 				} catch(UserAlreadyExistsException e) {
 					messageKey = 'user.already.exists'
 				}
+			}
+		} else if(params.pass) {
+			User user = User.findByEmail(params.user)
+			if(springSecurityService.encodePassword(params.pass) == user.password) {
+				if(params.provider == "facebook")
+					user.facebookId = params.username
+				else if(params.provider == "twitter")
+					user.twitterId = params.username
+				else {
+					return [messageKey: 'login.denied',
+						created: false,
+						confirmation: true,
+						provider: params.provider,
+						user: params.user,
+						username: params.username]
+				}
+				
+				user.save(flush: true)
+				springSecurityService.reauthenticate(user.username)
+				redirect(uri: "/home/${params.provider}")
+				return
+			} else {
+				log.warn "UH OH!"
+				return [messageKey: 'login.denied', 
+					created: false,
+					confirmation: true, 
+					provider: params.provider, 
+					user: params.user, 
+					username: params.username]
 			}
 		} else {
 			if(data.getProviderId() == "facebook") {
@@ -318,9 +345,13 @@ class LoginController {
 					}
 				}
 			} else if(data.getProviderId() == "twitter") {
-				render "firstName: ${profile.firstName}, lastName: ${profile.lastName}, \
-					email: ${profile.email}, username: ${profile.username}, \
-					provider: ${data.getProviderId()}"
+				User user = User.findByTwitterId(profile.username)
+				if(user) {
+					springSecurityService.reauthenticate(user.username)
+					redirect(uri: "/")
+				} else {
+					return [provider: data.getProviderId(), profile: profile]
+				}
 			} else {
 				redirect(uri: "/user/register")
 			}
