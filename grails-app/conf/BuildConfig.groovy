@@ -35,6 +35,9 @@ grails.project.dependency.resolution = {
 		mavenRepo "http://maven.springframework.org/release"
 		mavenRepo "http://maven.springframework.org/snapshot"
 		mavenRepo "http://maven.springframework.org/milestone"
+		
+		// Repo for Spantree Artifactory
+		mavenRepo "http://spantree.artifactoryonline.com/spantree/plugins-releases-local"
 
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
         //mavenRepo "http://snapshots.repository.codehaus.org"
@@ -57,6 +60,7 @@ grails.project.dependency.resolution = {
 		compile("org.springframework.social:spring-social-web:${springSocialVersion}") { transitive = false }
 		compile("org.springframework.social:spring-social-facebook:${springSocialVersion}") { transitive = false }
 		compile("org.springframework.social:spring-social-twitter:${springSocialVersion}") { transitive = false }
+		compile("org.springframework.social:spring-social-linkedin:1.0.0.RC1") { transitive = false }
 		compile("org.springframework.security:spring-security-crypto:3.1.0.RELEASE") { transitive = false }
 		compile("javax.inject:javax.inject:1")
     }
@@ -86,5 +90,6 @@ grails.project.dependency.resolution = {
 		compile(":spring-social-core:0.1.31")
 		compile(":spring-social-twitter:0.1.31")
 		compile(":spring-social-facebook:0.1.32")
+		compile(":spring-social-linked-in:0.1.31")
     }
 }

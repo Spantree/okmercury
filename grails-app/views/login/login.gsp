@@ -31,10 +31,12 @@
 						<div class="text">Login with Twitter</div>
 					</button>
 					</form>
-					<a href="" class="linkedin_connect">
+					<form action="/sssignin/linkedin" method="POST" style="margin: 0px">
+					<button class="linkedin_connect" type="submit">
 						<div class="img"><i class="fa-icon-linkedin"></i></div>
 						<div class="text">Login with LinkedIn</div>
-					</a>
+					</button>
+					</form>
 					<div class="page-title-small">
 						<h3 style="background:#f0f0f0">or</h3>
 					</div>
