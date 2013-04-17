@@ -1,5 +1,6 @@
 package co.okmercury
 
+import grails.plugins.springsecurity.Secured
 import org.apache.commons.lang.math.RandomUtils
 import org.bson.types.ObjectId
 
@@ -195,7 +196,7 @@ class ResetController {
 			// Update user info
 			User user = new User()
 			user.username = map.email
-			user.password = 'password'
+			user.plainTextPassword = 'password'
 			user.firstName = map.firstName
 			user.lastName = map.lastName
 			user.email = user.username
@@ -261,6 +262,7 @@ class ResetController {
 		}
 	}
 	
+	@Secured(['ROLE_ADMIN'])
 	def reset() {
 		deleteStuff()
 		addUsers()

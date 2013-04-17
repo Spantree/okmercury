@@ -19,14 +19,18 @@
 			</g:if>
 			<div class="row-fluid">
 				<div id="login-form">
-					<a href="" class="facebook_connect">
-						<div class="img"><i class="fa-icon-facebook"></i></div>
-						<div class="text">Login with Facebook</div>
-					</a>
-					<a href="" class="twitter_connect">
+					<form action="/sssignin/facebook" method="POST" style="margin: 0px">
+					<button class="facebook_connect" type="submit">
+							<div class="img"><i class="fa-icon-facebook"></i></div>
+							<div class="text">Login with Facebook</div>
+					</button>
+					</form>
+					<form action="/sssignin/twitter" method="POST" style="margin: 0px">
+					<button class="twitter_connect" type="submit">
 						<div class="img"><i class="fa-icon-twitter"></i></div>
 						<div class="text">Login with Twitter</div>
-					</a>
+					</button>
+					</form>
 					<a href="" class="linkedin_connect">
 						<div class="img"><i class="fa-icon-linkedin"></i></div>
 						<div class="text">Login with LinkedIn</div>
@@ -40,10 +44,12 @@
 							<input class="span12" id="pass" name='j_password' type="password" value="" placeholder="password"/>
 						</div>
 						<div class="row-fluid">
+							<!--
 							<div class="remember">
 								<input id="remember" name='${rememberMeParameter}' type="checkbox" value="1"/>
 								<label for='remember'><g:message code="springSecurity.login.remember.me.label"/></label>
 							</div>
+							-->
 							<div class="register">
 								<a href="/user/register">Register</a>
 							</div>

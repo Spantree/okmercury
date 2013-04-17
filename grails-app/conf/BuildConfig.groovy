@@ -16,7 +16,7 @@ grails.project.dependency.resolution = {
     inherits("global") {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
         // excludes 'ehcache'
-        excludes "hibernate"
+        excludes "hibernate", "grails-hibernate"
     }
     log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
@@ -31,6 +31,10 @@ grails.project.dependency.resolution = {
 
         mavenLocal()
         mavenCentral()
+		
+		mavenRepo "http://maven.springframework.org/release"
+		mavenRepo "http://maven.springframework.org/snapshot"
+		mavenRepo "http://maven.springframework.org/milestone"
 
         // uncomment these (or add new ones) to enable remote dependency resolution from public Maven repositories
         //mavenRepo "http://snapshots.repository.codehaus.org"
@@ -45,6 +49,16 @@ grails.project.dependency.resolution = {
         runtime 'org.codehaus.gpars:gpars:1.0.0'
 		runtime 'org.codehaus.groovy.modules.http-builder:http-builder:0.6'
 		test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+		
+		// Spring Social Dependencies
+		def springSocialVersion = "1.0.2.RELEASE"
+		
+		compile("org.springframework.social:spring-social-core:${springSocialVersion}") { transitive = false }
+		compile("org.springframework.social:spring-social-web:${springSocialVersion}") { transitive = false }
+		compile("org.springframework.social:spring-social-facebook:${springSocialVersion}") { transitive = false }
+		compile("org.springframework.social:spring-social-twitter:${springSocialVersion}") { transitive = false }
+		compile("org.springframework.security:spring-security-crypto:3.1.0.RELEASE") { transitive = false }
+		compile("javax.inject:javax.inject:1")
     }
 
     plugins {
@@ -68,5 +82,9 @@ grails.project.dependency.resolution = {
 		compile(":spring-security-core:1.2.7.3") { excludes "hibernate" }
         runtime(":cache:1.0.1"){ excludes "hibernate" }
 		runtime(":spock:0.7") { excludes "spock-grails-support", "hibernate" }
+		compile(":spring-security-core:1.2.4")
+		compile(":spring-social-core:0.1.31")
+		compile(":spring-social-twitter:0.1.31")
+		compile(":spring-social-facebook:0.1.32")
     }
 }

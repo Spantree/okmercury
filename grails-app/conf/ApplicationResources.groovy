@@ -11,7 +11,7 @@ modules = {
 		resource url: 'coffee/modules/mercury/views/Mercury.QuestionEditView.coffee'
 		resource url: 'coffee/modules/mercury/views/Mercury.QuestionAnswerView.coffee'
 		
-		resource url: 'coffee/modules/mercury/routers/Mercury.Router.coffee'
+		//resource url: 'coffee/modules/mercury/routers/Mercury.Router.coffee'
 		
     }
 }

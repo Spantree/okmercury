@@ -9,10 +9,17 @@
 			<div class="span11 definition">
 				<em>Mercury:</em> the patron god of financial gain, commerce, eloquence,
 				messages/communication, travelers, boundaries and luck.
+				<g:if test="${oauth}">
+					<div class="row">
+						<div class="span11">
+							<h4>Your okMercury account has been connected with your ${oauth} account.</h4>
+						</div>
+					</div>
+				</g:if>
 			</div>
 		</div>
 		<div class="row main-links">
-			<g:if test="${user.email != 'admin@okmercury.co'}">
+			<g:if test="${!user.authorities.contains('ROLE_ADMIN')}">
 				<a id="answer-questions" class="span2 btn btn-success"
 					href="<g:createLink uri="/user/${user.id}/question/unanswered"/>"
 				>
@@ -35,7 +42,7 @@
 				href="<g:createLink uri="/question/list"/>">
 				<i class="fa-icon-tasks"></i>Review Questions
 			</a>
-			<g:if test="${user.email != 'admin@okmercury.co'}">
+			<g:if test="${!user.authorities.contains('ROLE_ADMIN')}">
 				<a id="view-matches" class="span2 btn btn-success"
 					href="<g:createLink uri="/user/${user.id}/matches"/>"
 				>
