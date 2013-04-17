@@ -81,6 +81,11 @@ environments {
 		grails.plugins.springsocial.twitter.consumerKey = "mcBxpCFGwS9gW5NbF4AZZg"
 		grails.plugins.springsocial.twitter.consumerSecret = "q91y7MQwcQVbugnrMXlc83YupMjZzuEvM5o0XIiSupI"
 		grails.plugins.springsocial.twitter.page.handleSignIn = "/register/twitter"
+		
+		// LinkedIn Settings (Grails Showcase)
+		grails.plugins.springsocial.linkedin.consumerKey='mtzxep0lg5i3'
+		grails.plugins.springsocial.linkedin.consumerSecret='oJUplpRmThoAws1I'
+		grails.plugins.springsocial.linkedin.page.handleSignIn = "/register/linkedin"
     }
     production {
         grails.logging.jul.usebridge = false
